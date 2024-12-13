@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqdbw0cy0tpc7"]
+
+[ext_resource type="Texture2D" uid="uid://bqntnql7nfjv1" path="res://kenney_pixel-platformer/tilemap_packed.png" id="1_uerxu"]
+
+[node name="World" type="Node2D"]
+
+[node name="TilemapPacked" type="Sprite2D" parent="."]
+position = Vector2(180, 81)
+texture = ExtResource("1_uerxu")

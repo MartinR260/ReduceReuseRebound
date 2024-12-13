@@ -1,3 +1,7 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1733998744
-icon.svg::CompressedTexture2D::8295842843905965745::1733998728::1733998745::1::::<><>::
+::res://::1734089407
+icon.svg::CompressedTexture2D::8295842843905965745::1733998728::1734089146::1::::<><>::
+::res://kenney_pixel-platformer/::1734089407
+tilemap-backgrounds_packed.png::CompressedTexture2D::5189638072091643772::1734089403::1734089407::1::::<><>::
+tilemap-characters_packed.png::CompressedTexture2D::554778197398126238::1734089403::1734089407::1::::<><>::
+tilemap_packed.png::CompressedTexture2D::3537456789725687232::1734089403::1734089407::1::::<><>::
