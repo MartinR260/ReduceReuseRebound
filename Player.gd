@@ -22,7 +22,7 @@ func _physics_process(delta):
 		air_time += delta
 		
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and (is_on_floor() or double_jump):
+	if Input.is_action_pressed("ui_accept") and (is_on_floor() or double_jump):
 		double_jump = false;
 		air_time /= 1.5
 		velocity.y = JUMP_VELOCITY
