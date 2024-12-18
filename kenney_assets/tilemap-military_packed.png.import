@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cf65t0pamj1ci"
-path="res://.godot/imported/tilemap-backgrounds_packed.png-1f79647ac01ced0d4187bab8e41ccf0a.ctex"
+uid="uid://cicoq2t0g5jhg"
+path="res://.godot/imported/tilemap-military_packed.png-64a7527d9c3c581d28e486d8286e51cc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://kenney_pixel-platformer/tilemap-backgrounds_packed.png"
-dest_files=["res://.godot/imported/tilemap-backgrounds_packed.png-1f79647ac01ced0d4187bab8e41ccf0a.ctex"]
+source_file="res://kenney_assets/tilemap-military_packed.png"
+dest_files=["res://.godot/imported/tilemap-military_packed.png-64a7527d9c3c581d28e486d8286e51cc.ctex"]
 
 [params]
 
