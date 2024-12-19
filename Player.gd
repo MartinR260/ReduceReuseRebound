@@ -19,8 +19,12 @@ func _physics_process(delta):
 			sprite.flip_h = true
 		else:
 			sprite.flip_h = false
-		sprite.animation = "Walk"
-		sprite.play()
+		if is_on_wall():
+			sprite.animation = "Still"
+			sprite.play()
+		else:
+			sprite.animation = "Walk"
+			sprite.play()
 		apply_acceleration(input.x)
 	
 	# Add the gravity.
@@ -28,8 +32,12 @@ func _physics_process(delta):
 		#velocity.y += gravity * air_time * (delta / 2)
 		velocity.y += gravity * delta
 		air_time += delta
-		sprite.animation = "Jump"
-		sprite.play()
+		if velocity.y > 0:
+			sprite.animation = "Fall"
+			sprite.play()
+		elif velocity.y < 0:
+			sprite.animation = "Jump"
+			sprite.play()
 		
 		
 	# Handle jump.
