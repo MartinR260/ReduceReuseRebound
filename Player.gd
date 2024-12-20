@@ -3,10 +3,11 @@ var rocket_scene = preload("res://Rocket.tscn")
 var breakable_scene = preload("res://Breakable.tscn")
 
 @onready var sprite = $AnimatedSprite2D
-@onready var cursor = preload("res://kenney_assets/cursor_crosshair.png")
+@onready var crosshair = preload("res://kenney_assets/cursor_crosshair.png")
 @export var SPEED = 130.0
 @export var JUMP_VELOCITY = -260.0 #200
 
+var collected_blocks = 0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var double_jump = true;
 var air_time = 1;
@@ -15,7 +16,7 @@ var last_mouse_position = Vector2.ZERO
 
 func _physics_process(delta):
 	var hotspot = Vector2(16, 16)
-	Input.set_custom_mouse_cursor(cursor, Input.CURSOR_ARROW, hotspot)
+	Input.set_custom_mouse_cursor(crosshair, Input.CURSOR_ARROW, hotspot)
 	
 	var mouse_position = get_global_mouse_position()
 	var direction = mouse_position - global_position
@@ -69,7 +70,7 @@ func _physics_process(delta):
 	
 	
 	if is_on_floor():
-		double_jump = false; #Make 'true' for double jump.
+		double_jump = false; #Make 'true' for double jump
 		air_time = 1
 		if velocity.x == 0:
 			if idle_timer > 1.5:
@@ -98,14 +99,26 @@ func _physics_process(delta):
 		rocket.direction = direction.angle()
 		rocket.starting_rotation = direction.angle()
 		if sprite.flip_h:
-			rocket.starting_position = Vector2(global_position.x - 18, global_position.y + 2)
+			if direction.angle() > -2 and direction.angle() < -1:
+				rocket.starting_position = Vector2(global_position.x - 9, global_position.y - 20)
+			elif direction.angle() < 2 and direction.angle() > 1:
+				rocket.starting_position = Vector2(global_position.x - 9, global_position.y + 20)
+			else:
+				rocket.starting_position = Vector2(global_position.x - 18, global_position.y + 2)
 		else:
-			rocket.starting_position = Vector2(global_position.x + 18, global_position.y + 2)
-			
+			if direction.angle() > -2 and direction.angle() < -1:
+				rocket.starting_position = Vector2(global_position.x + 9, global_position.y - 20)
+			elif direction.angle() < 2 and direction.angle() > 1:
+				rocket.starting_position = Vector2(global_position.x + 9, global_position.y + 20)
+			else:
+				rocket.starting_position = Vector2(global_position.x + 18, global_position.y + 2)
+				
+		rocket.connect("broken_block", func(): collected_blocks+=1)
 		get_parent().add_child(rocket)
 		
 		
-	if Input.is_action_just_released("right_click"):
+	if Input.is_action_just_pressed("right_click") and collected_blocks > 0 and (global_position.distance_to(mouse_position) <= 54 or global_position.distance_to(mouse_position) >= 36):
+		collected_blocks -= 1
 		var breakable = breakable_scene.instantiate()
 		breakable.global_position = mouse_position.snapped(Vector2(18, 18))
 		get_parent().add_child(breakable)

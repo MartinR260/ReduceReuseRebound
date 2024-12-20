@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://h8cxfjmnvgql" path="res://kenney_assets/tilemap-military_packed_enhanced.png" id="2_wjgok"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jl80k"]
-size = Vector2(12.5064, 10.0078)
+size = Vector2(10, 7.51521)
 
 [node name="Rocket" type="RigidBody2D"]
 script = ExtResource("1_i4i3i")
@@ -16,5 +16,5 @@ region_enabled = true
 region_rect = Rect2(179, 164, 10, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.00463653, 0.00390637)
+position = Vector2(2.38419e-07, 0.00760376)
 shape = SubResource("RectangleShape2D_jl80k")
