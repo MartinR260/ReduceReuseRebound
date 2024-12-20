@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckahgc5m6uiwc"]
+
+[ext_resource type="Texture2D" uid="uid://b6lh1nfyhick0" path="res://kenney_assets/tilemap_packed_enhanced.png" id="1_fr53o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_orxq2"]
+size = Vector2(18, 18)
+
+[node name="Breakable" type="RigidBody2D"]
+freeze = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_fr53o")
+region_enabled = true
+region_rect = Rect2(0, 36, 18, 18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_orxq2")

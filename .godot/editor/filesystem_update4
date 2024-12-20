@@ -2,3 +2,7 @@ res://World.tscn
 res://Block.tscn
 res://Player.tscn
 res://Player.gd
+res://Rocket.tscn
+res://Rocket.gd
+res://BreakableBlock.tscn
+res://Breakable.tscn

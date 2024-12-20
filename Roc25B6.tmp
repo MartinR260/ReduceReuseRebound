@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://c4gntvgt2fp28"]
+
+[ext_resource type="Script" path="res://Rocket.gd" id="1_i4i3i"]
+[ext_resource type="Texture2D" uid="uid://cicoq2t0g5jhg" path="res://kenney_assets/tilemap-military_packed.png" id="1_mc3wo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yt3wh"]
+atlas = ExtResource("1_mc3wo")
+region = Rect2(176, 160, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y0fyk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yt3wh")
+}],
+"loop": true,
+"name": &"Fire",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bubwd"]
+size = Vector2(11.2603, 8.94136)
+
+[node name="Rocket" type="CharacterBody2D"]
+script = ExtResource("1_i4i3i")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.125, 1.125)
+sprite_frames = SubResource("SpriteFrames_y0fyk")
+animation = &"Fire"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bubwd")
