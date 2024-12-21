@@ -1,65 +1,37 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqdbw0cy0tpc7"]
+[gd_scene load_steps=6 format=3 uid="uid://cqdbw0cy0tpc7"]
 
-[ext_resource type="PackedScene" uid="uid://dlo0vl5lmowqd" path="res://Block.tscn" id="1_npeb5"]
 [ext_resource type="PackedScene" uid="uid://buvtgy4fsaa3k" path="res://Player.tscn" id="2_6aqpw"]
 [ext_resource type="PackedScene" uid="uid://ckahgc5m6uiwc" path="res://Breakable.tscn" id="3_etvib"]
+[ext_resource type="PackedScene" uid="uid://d16ijhl0hcqyd" path="res://TileMap.tscn" id="3_r81nl"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="4_mbh3c"]
+[ext_resource type="Texture2D" uid="uid://cacphq2ieh63a" path="res://kenney_assets/cursor_block.png" id="5_orer0"]
 
 [node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("2_6aqpw")]
-position = Vector2(57, 121)
+position = Vector2(57, 112)
 
-[node name="Platforms" type="Node" parent="."]
-
-[node name="Block" parent="Platforms" instance=ExtResource("1_npeb5")]
-position = Vector2(18, 126)
-
-[node name="Block2" parent="Platforms" instance=ExtResource("1_npeb5")]
-position = Vector2(18, 144)
-
-[node name="Block3" parent="Platforms" instance=ExtResource("1_npeb5")]
-position = Vector2(36, 144)
-
-[node name="Block4" parent="Platforms" instance=ExtResource("1_npeb5")]
-position = Vector2(54, 144)
-
-[node name="Block5" parent="Platforms" instance=ExtResource("1_npeb5")]
-position = Vector2(72, 144)
-
-[node name="Block6" parent="Platforms" instance=ExtResource("1_npeb5")]
-position = Vector2(90, 144)
-
-[node name="Block7" parent="Platforms" instance=ExtResource("1_npeb5")]
-position = Vector2(108, 144)
-
-[node name="Block8" parent="Platforms" instance=ExtResource("1_npeb5")]
-position = Vector2(108, 126)
-
-[node name="Block9" parent="Platforms" instance=ExtResource("1_npeb5")]
-position = Vector2(126, 126)
-
-[node name="Block10" parent="Platforms" instance=ExtResource("1_npeb5")]
-position = Vector2(126, 108)
-
-[node name="Block11" parent="Platforms" instance=ExtResource("1_npeb5")]
-position = Vector2(144, 108)
-
-[node name="Block12" parent="Platforms" instance=ExtResource("1_npeb5")]
-position = Vector2(162, 108)
-
-[node name="Block13" parent="Platforms" instance=ExtResource("1_npeb5")]
-position = Vector2(180, 108)
-
-[node name="Block14" parent="Platforms" instance=ExtResource("1_npeb5")]
-position = Vector2(180, 90)
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(-66, -121)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_orer0")
 
 [node name="Breakables" type="Node" parent="."]
 
 [node name="Breakable" parent="Breakables" instance=ExtResource("3_etvib")]
-position = Vector2(18, 108)
+position = Vector2(171, 117)
 
 [node name="Breakable2" parent="Breakables" instance=ExtResource("3_etvib")]
-position = Vector2(108, 108)
+position = Vector2(171, 99)
 
 [node name="Breakable3" parent="Breakables" instance=ExtResource("3_etvib")]
-position = Vector2(180, 72)
+position = Vector2(189, 99)
+
+[node name="Breakable4" parent="Breakables" instance=ExtResource("3_etvib")]
+position = Vector2(189, 117)
+
+[node name="TileMap" parent="." instance=ExtResource("3_r81nl")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(162, 90)
+script = ExtResource("4_mbh3c")

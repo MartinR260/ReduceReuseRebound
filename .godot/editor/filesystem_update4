@@ -1,8 +1,7 @@
-res://World.tscn
-res://Block.tscn
-res://Player.tscn
-res://Breakable.tscn
-res://Rocket.tscn
-res://Rocket.gd
-res://Player.gd
 res://TileMap.tscn
+res://Player.gd
+res://World.tscn
+res://Player.tscn
+res://Rocket.tscn
+res://Camera2D.gd
+res://Rocket.gd

@@ -1,7 +1,6 @@
 extends RigidBody2D
 
 @export var MAX_SPEED = 1000.0
-@onready var sprite = $Sprite2D
 signal broken_block
 
 var acceleration = 0

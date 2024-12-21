@@ -3,6 +3,7 @@ var rocket_scene = preload("res://Rocket.tscn")
 var breakable_scene = preload("res://Breakable.tscn")
 
 @onready var sprite = $AnimatedSprite2D
+@onready var placing_pointer : Sprite2D = $Sprite2D
 @onready var crosshair = preload("res://kenney_assets/cursor_crosshair.png")
 @export var SPEED = 130.0
 @export var JUMP_VELOCITY = -260.0 #200
@@ -13,10 +14,21 @@ var double_jump = true;
 var air_time = 1;
 var idle_timer = 0.0
 var last_mouse_position = Vector2.ZERO
+var build_mode = false
+var gun_mode = true
+var mouse_offset = Vector2.ZERO
 
 func _physics_process(delta):
-	var hotspot = Vector2(16, 16)
-	Input.set_custom_mouse_cursor(crosshair, Input.CURSOR_ARROW, hotspot)
+	if Input.is_action_just_pressed("build_mode"):
+		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+		build_mode = true
+		gun_mode = false
+	elif Input.is_action_just_pressed("gun_mode"):
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		placing_pointer.global_position = Vector2(-9, -9)
+		Input.set_custom_mouse_cursor(crosshair, Input.CURSOR_ARROW, Vector2(16, 16))
+		gun_mode = true
+		build_mode = false
 	
 	var mouse_position = get_global_mouse_position()
 	var direction = mouse_position - global_position
@@ -39,6 +51,13 @@ func _physics_process(delta):
 			sprite.animation = "Walk"
 			sprite.play()
 		apply_acceleration(input.x)
+		
+	if build_mode:
+		if !check_cursor_overlap(mouse_position):
+			mouse_offset = Vector2(-9, -9) + mouse_position
+			placing_pointer.global_position = (Vector2(9, 9) + mouse_offset.snapped(Vector2(18, 18)))
+	if gun_mode:
+		Input.set_custom_mouse_cursor(crosshair, Input.CURSOR_ARROW, Vector2(16, 16))
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -67,8 +86,8 @@ func _physics_process(delta):
 		last_mouse_position = mouse_position
 	else:
 		idle_timer += delta
-	
-	
+		
+		
 	if is_on_floor():
 		double_jump = false; #Make 'true' for double jump
 		air_time = 1
@@ -94,7 +113,7 @@ func _physics_process(delta):
 					sprite.play()
 		
 		
-	if Input.is_action_just_pressed("left_click"):
+	if Input.is_action_just_pressed("left_click") and gun_mode:
 		var rocket = rocket_scene.instantiate()
 		rocket.direction = direction.angle()
 		rocket.starting_rotation = direction.angle()
@@ -117,10 +136,10 @@ func _physics_process(delta):
 		get_parent().add_child(rocket)
 		
 		
-	if Input.is_action_just_pressed("right_click") and collected_blocks > 0 and (global_position.distance_to(mouse_position) <= 54 or global_position.distance_to(mouse_position) >= 36):
+	if Input.is_action_just_pressed("right_click") and build_mode and collected_blocks > 0 and (global_position.distance_to(mouse_position) <= 54 or global_position.distance_to(mouse_position) >= 36):
 		collected_blocks -= 1
 		var breakable = breakable_scene.instantiate()
-		breakable.global_position = mouse_position.snapped(Vector2(18, 18))
+		breakable.global_position = placing_pointer.global_position
 		get_parent().add_child(breakable)
 		
 	move_and_slide()
@@ -130,4 +149,18 @@ func apply_friction():
 	
 func apply_acceleration(amount):
 	velocity.x = move_toward(velocity.x, SPEED * amount, 14)
+	
+func check_cursor_overlap(cursor_position):
+	var space_state = get_world_2d().direct_space_state
+	var query_parameters = PhysicsPointQueryParameters2D.new()
+	query_parameters.set_position(cursor_position)
+	query_parameters.collision_mask = 0b111
+	var collision = space_state.intersect_point(query_parameters, 1)
+	
+	if collision:
+		# print(collision[0])
+		if collision[0].collider.name == "Player" or collision[0].collider.name == "TileMap" or collision[0].collider.name.begins_with("Breakable") or collision[0].collider.name.begins_with("Breakable") or collision[0].collider.name.begins_with("@RigidBody2D"):
+			return true
+	else:
+		return false
 
