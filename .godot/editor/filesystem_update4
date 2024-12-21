@@ -1,7 +1,6 @@
-res://TileMap.tscn
-res://Player.gd
 res://World.tscn
+res://TileMap.tscn
 res://Player.tscn
 res://Rocket.tscn
-res://Camera2D.gd
+res://Player.gd
 res://Rocket.gd

@@ -11,11 +11,6 @@
 [node name="Player" parent="." instance=ExtResource("2_6aqpw")]
 position = Vector2(57, 112)
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-position = Vector2(-66, -121)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("5_orer0")
-
 [node name="Breakables" type="Node" parent="."]
 
 [node name="Breakable" parent="Breakables" instance=ExtResource("3_etvib")]
@@ -24,14 +19,13 @@ position = Vector2(171, 117)
 [node name="Breakable2" parent="Breakables" instance=ExtResource("3_etvib")]
 position = Vector2(171, 99)
 
-[node name="Breakable3" parent="Breakables" instance=ExtResource("3_etvib")]
-position = Vector2(189, 99)
-
-[node name="Breakable4" parent="Breakables" instance=ExtResource("3_etvib")]
-position = Vector2(189, 117)
-
 [node name="TileMap" parent="." instance=ExtResource("3_r81nl")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(162, 90)
 script = ExtResource("4_mbh3c")
+
+[node name="Placer" type="Sprite2D" parent="."]
+position = Vector2(-9, -9)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_orer0")

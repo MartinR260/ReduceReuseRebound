@@ -3,8 +3,12 @@ var rocket_scene = preload("res://Rocket.tscn")
 var breakable_scene = preload("res://Breakable.tscn")
 
 @onready var sprite = $AnimatedSprite2D
-@onready var placing_pointer : Sprite2D = $Sprite2D
+@onready var placing_pointer = $"../Placer"
 @onready var crosshair = preload("res://kenney_assets/cursor_crosshair.png")
+@onready var place_allowed = preload("res://kenney_assets/place_allowed.png")
+@onready var place_forbidden = preload("res://kenney_assets/place_forbidden.png")
+@onready var placer = preload("res://kenney_assets/cursor_block.png")
+
 @export var SPEED = 130.0
 @export var JUMP_VELOCITY = -260.0 #200
 
@@ -20,12 +24,11 @@ var mouse_offset = Vector2.ZERO
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("build_mode"):
-		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+		Input.set_custom_mouse_cursor(place_allowed, Input.CURSOR_ARROW, Vector2(0, 0))
 		build_mode = true
 		gun_mode = false
 	elif Input.is_action_just_pressed("gun_mode"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		placing_pointer.global_position = Vector2(-9, -9)
+		placing_pointer.global_position = Vector2(-9,-9)
 		Input.set_custom_mouse_cursor(crosshair, Input.CURSOR_ARROW, Vector2(16, 16))
 		gun_mode = true
 		build_mode = false
@@ -54,8 +57,14 @@ func _physics_process(delta):
 		
 	if build_mode:
 		if !check_cursor_overlap(mouse_position):
+			if collected_blocks > 0:
+				Input.set_custom_mouse_cursor(place_allowed, Input.CURSOR_ARROW, Vector2(0, 0))
+			else:
+				Input.set_custom_mouse_cursor(place_forbidden, Input.CURSOR_ARROW, Vector2(0, 0))
 			mouse_offset = Vector2(-9, -9) + mouse_position
 			placing_pointer.global_position = (Vector2(9, 9) + mouse_offset.snapped(Vector2(18, 18)))
+		else:
+			Input.set_custom_mouse_cursor(place_forbidden, Input.CURSOR_ARROW, Vector2(0, 0))
 	if gun_mode:
 		Input.set_custom_mouse_cursor(crosshair, Input.CURSOR_ARROW, Vector2(16, 16))
 	
@@ -136,7 +145,8 @@ func _physics_process(delta):
 		get_parent().add_child(rocket)
 		
 		
-	if Input.is_action_just_pressed("right_click") and build_mode and collected_blocks > 0 and (global_position.distance_to(mouse_position) <= 54 or global_position.distance_to(mouse_position) >= 36):
+		
+	if Input.is_action_just_pressed("right_click") and !check_cursor_overlap(mouse_position) and build_mode and collected_blocks > 0:
 		collected_blocks -= 1
 		var breakable = breakable_scene.instantiate()
 		breakable.global_position = placing_pointer.global_position
