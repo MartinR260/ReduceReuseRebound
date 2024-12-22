@@ -1,6 +1,10 @@
+res://DebrisParticles.tscn
 res://World.tscn
 res://TileMap.tscn
 res://Player.tscn
 res://Rocket.tscn
-res://Player.gd
 res://Rocket.gd
+res://DebrisParticle.tscn
+res://Breakable.tscn
+res://DebrisParticle.gd
+res://Player.gd

@@ -5,13 +5,17 @@ var breakable_scene = preload("res://Breakable.tscn")
 @onready var sprite = $AnimatedSprite2D
 @onready var placing_pointer = $"../Placer"
 @onready var crosshair = preload("res://kenney_assets/cursor_crosshair.png")
+@onready var dimmed_crosshair = preload("res://kenney_assets/dimmed_crosshair.png")
 @onready var place_allowed = preload("res://kenney_assets/place_allowed.png")
 @onready var place_forbidden = preload("res://kenney_assets/place_forbidden.png")
-@onready var placer = preload("res://kenney_assets/cursor_block.png")
+@onready var too_far_placer = preload("res://kenney_assets/dimmed_cursor_block.png")
+@onready var valid_placer = preload("res://kenney_assets/cursor_block.png")
 
 @export var SPEED = 130.0
-@export var JUMP_VELOCITY = -260.0 #200
+@export var JUMP_VELOCITY = -260.0
+@export var cooldown_time = 0.85 #1.15
 
+var last_shot_time = -cooldown_time
 var collected_blocks = 0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var double_jump = true;
@@ -57,9 +61,11 @@ func _physics_process(delta):
 		
 	if build_mode:
 		if !check_cursor_overlap(mouse_position):
-			if collected_blocks > 0:
+			if collected_blocks > 0 and is_placer_close_enough(mouse_position):
+				placing_pointer.texture = valid_placer
 				Input.set_custom_mouse_cursor(place_allowed, Input.CURSOR_ARROW, Vector2(0, 0))
 			else:
+				placing_pointer.texture = too_far_placer
 				Input.set_custom_mouse_cursor(place_forbidden, Input.CURSOR_ARROW, Vector2(0, 0))
 			mouse_offset = Vector2(-9, -9) + mouse_position
 			placing_pointer.global_position = (Vector2(9, 9) + mouse_offset.snapped(Vector2(18, 18)))
@@ -86,6 +92,8 @@ func _physics_process(delta):
 		double_jump = false;
 		air_time /= 1.5
 		velocity.y = JUMP_VELOCITY
+		if collected_blocks < 5:
+			velocity.y += collected_blocks * 15
 	else:
 		if Input.is_action_just_released("jump"):
 			velocity.y = max(-80, velocity.y)
@@ -105,24 +113,14 @@ func _physics_process(delta):
 				sprite.animation = "Idle"
 				sprite.play()
 			else:
-				if (direction.angle() > -0.3 and direction.angle() < -0.15) or (direction.angle() > -3 and direction.angle() < -2.65):
-					sprite.animation = "AimUpStill"
-					sprite.play()
-				if direction.angle() > -2.65 and direction.angle() < -0.3:
-					sprite.animation = "AimAboveStill"
-					sprite.play()
-				if (direction.angle() < 0.3 and direction.angle() > 0.15) or (direction.angle() < 2.8 and direction.angle() > 2.65):
-					sprite.animation = "AimDownStill"
-					sprite.play()
-				if direction.angle() < 2.65 and direction.angle() > 0.3:
-					sprite.animation = "AimUnderStill"
-					sprite.play()
-				if (direction.angle() > -0.15 and direction.angle() < 0.15) or direction.angle() < -2.8 or direction.angle() > 2.8:
-					sprite.animation = "Still"
-					sprite.play()
+				change_aim_angle(direction)
+		
+	if (Time.get_ticks_msec() / 1000.0) - last_shot_time < cooldown_time:
+		Input.set_custom_mouse_cursor(dimmed_crosshair, Input.CURSOR_ARROW, Vector2(16, 16))
 		
 		
-	if Input.is_action_just_pressed("left_click") and gun_mode:
+	if Input.is_action_just_pressed("left_click") and gun_mode and ((Time.get_ticks_msec() / 1000.0) - last_shot_time >= cooldown_time):
+		last_shot_time = (Time.get_ticks_msec() / 1000.0) 
 		var rocket = rocket_scene.instantiate()
 		rocket.direction = direction.angle()
 		rocket.starting_rotation = direction.angle()
@@ -145,8 +143,7 @@ func _physics_process(delta):
 		get_parent().add_child(rocket)
 		
 		
-		
-	if Input.is_action_just_pressed("right_click") and !check_cursor_overlap(mouse_position) and build_mode and collected_blocks > 0:
+	if Input.is_action_just_pressed("right_click") and !check_cursor_overlap(mouse_position) and build_mode and collected_blocks > 0 and is_placer_close_enough(mouse_position):
 		collected_blocks -= 1
 		var breakable = breakable_scene.instantiate()
 		breakable.global_position = placing_pointer.global_position
@@ -160,6 +157,23 @@ func apply_friction():
 func apply_acceleration(amount):
 	velocity.x = move_toward(velocity.x, SPEED * amount, 14)
 	
+func change_aim_angle(direction):
+	if (direction.angle() > -0.3 and direction.angle() < -0.15) or (direction.angle() > -3 and direction.angle() < -2.65):
+		sprite.animation = "AimUpStill"
+		sprite.play()
+	if direction.angle() > -2.65 and direction.angle() < -0.3:
+		sprite.animation = "AimAboveStill"
+		sprite.play()
+	if (direction.angle() < 0.3 and direction.angle() > 0.15) or (direction.angle() < 2.8 and direction.angle() > 2.65):
+		sprite.animation = "AimDownStill"
+		sprite.play()
+	if direction.angle() < 2.65 and direction.angle() > 0.3:
+		sprite.animation = "AimUnderStill"
+		sprite.play()
+	if (direction.angle() > -0.15 and direction.angle() < 0.15) or direction.angle() < -2.8 or direction.angle() > 2.8:
+		sprite.animation = "Still"
+		sprite.play()
+	
 func check_cursor_overlap(cursor_position):
 	var space_state = get_world_2d().direct_space_state
 	var query_parameters = PhysicsPointQueryParameters2D.new()
@@ -171,6 +185,12 @@ func check_cursor_overlap(cursor_position):
 		# print(collision[0])
 		if collision[0].collider.name == "Player" or collision[0].collider.name == "TileMap" or collision[0].collider.name.begins_with("Breakable") or collision[0].collider.name.begins_with("Breakable") or collision[0].collider.name.begins_with("@RigidBody2D"):
 			return true
+	else:
+		return false
+
+func is_placer_close_enough(mouse_position):
+	if global_position.x - mouse_position.x >= -48 and global_position.x - mouse_position.x <= 48 and global_position.y - mouse_position.y >= -50 and global_position.y - mouse_position.y <= 40:
+		return true
 	else:
 		return false
 

@@ -684,7 +684,8 @@ texture_region_size = Vector2i(18, 18)
 
 [sub_resource type="TileSet" id="TileSet_sdi6p"]
 tile_size = Vector2i(18, 18)
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 513
+physics_layer_0/collision_mask = 513
 sources/0 = SubResource("TileSetAtlasSource_m6lky")
 
 [node name="TileMap" type="TileMap"]

@@ -7,6 +7,7 @@
 size = Vector2(10, 7.51521)
 
 [node name="Rocket" type="RigidBody2D"]
+gravity_scale = 0.0
 script = ExtResource("1_i4i3i")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
