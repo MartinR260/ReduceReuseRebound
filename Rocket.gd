@@ -1,7 +1,8 @@
 extends RigidBody2D
 
 @export var MAX_SPEED = 1000.0
-@onready var particle_scene = preload("res://DebrisParticle.tscn")
+@onready var debris_scene = preload("res://DebrisParticle.tscn")
+@onready var explosion_scene = preload("res://Explosion.tscn")
 signal broken_block
 
 var acceleration = 0
@@ -20,10 +21,24 @@ func _process(delta):
 	var collision = move_and_collide(velocity)
 	if collision:
 		if collision.get_collider().name != "Player":
-			for __ in range(5):
-				var particle = particle_scene.instantiate()
-				particle.global_position = global_position
-				get_parent().add_child(particle)
+			var player = get_node("../Player")
+			var player_distance = global_position.distance_to(player.global_position)
+			print(player_distance)
+			if player and player_distance <= 40:
+				var player_direction = (player.global_position - global_position).normalized()
+				var player_force = 125
+				player.velocity += player_direction * player_force 
+				
+			var explosion = explosion_scene.instantiate()
+			explosion.global_position = global_position
+			get_parent().add_child(explosion)
+			
+			for __ in range(int(randf_range(3,6))):
+				var debris_particle = debris_scene.instantiate()
+				debris_particle.global_position = global_position
+				get_parent().add_child(debris_particle)
+			
+			
 			#print("Collided with: ", collision.get_collider().name)
 			if collision.get_collider().name.begins_with("Breakable") or collision.get_collider().name.begins_with("@RigidBody2D"):
 				# ^ Bad solution, find out problem

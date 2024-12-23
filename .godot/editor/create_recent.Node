@@ -1,6 +1,7 @@
+AnimatedSprite2D
 Sprite2D
-CollisionShape2D
 RigidBody2D
+CollisionShape2D
 CPUParticles2D
 Camera2D
 TileMap
@@ -9,5 +10,4 @@ Area2D
 Node2D
 Node
 CollisionPolygon2D
-AnimatedSprite2D
 CharacterBody2D

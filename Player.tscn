@@ -402,7 +402,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l6ww5"]
-size = Vector2(24, 28)
+size = Vector2(22, 28)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_7li5w")
