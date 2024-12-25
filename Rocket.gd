@@ -23,7 +23,7 @@ func _process(delta):
 		if collision.get_collider().name != "Player":
 			var player = get_node("../Player")
 			var player_distance = global_position.distance_to(player.global_position)
-			print(player_distance)
+			#print(player_distance)
 			if player and player_distance <= 40:
 				var player_direction = (player.global_position - global_position).normalized()
 				var player_force = 125

@@ -4,6 +4,7 @@ var breakable_scene = preload("res://Breakable.tscn")
 
 @onready var sprite = $AnimatedSprite2D
 @onready var placing_pointer = $"../Placer"
+@onready var camera = $"../Camera"
 @onready var crosshair = preload("res://kenney_assets/cursor_crosshair.png")
 @onready var dimmed_crosshair = preload("res://kenney_assets/dimmed_crosshair.png")
 @onready var place_allowed = preload("res://kenney_assets/place_allowed.png")
@@ -27,6 +28,13 @@ var gun_mode = true
 var mouse_offset = Vector2.ZERO
 
 func _physics_process(delta):
+	camera.global_position.x = 576 * (int(global_position.x) / 576) #the number is equal to the screen width
+	
+	if global_position.y >= 330:
+		global_position.x = 576 * (int(global_position.x) / 576) + 50
+		global_position.y = 100
+		velocity.y = 0
+		
 	if Input.is_action_just_pressed("build_mode"):
 		Input.set_custom_mouse_cursor(place_allowed, Input.CURSOR_ARROW, Vector2(0, 0))
 		build_mode = true
