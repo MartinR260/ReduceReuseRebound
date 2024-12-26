@@ -402,7 +402,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l6ww5"]
-size = Vector2(22, 28)
+size = Vector2(16, 26)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_7li5w")
@@ -415,4 +415,5 @@ frame = 18
 frame_progress = 0.925371
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_l6ww5")

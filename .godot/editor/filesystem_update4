@@ -1,8 +1,13 @@
-res://TileMap.tscn
 res://World.tscn
+res://TileMap.tscn
 res://Player.tscn
 res://Rocket.tscn
 res://Breakable.tscn
 res://DebrisParticle.tscn
 res://Explosion.tscn
+res://UI.tscn
+res://UI.gd
 res://Player.gd
+res://Rocket.gd
+res://Tutorial.tscn
+res://TutorialOverlay.tscn

@@ -1,3 +1,8 @@
+TextureRect
+Label
+Container
+Control
+TextEdit
 TileMap
 AnimatedSprite2D
 Sprite2D
@@ -7,7 +12,3 @@ CPUParticles2D
 Camera2D
 StaticBody2D
 Area2D
-Node2D
-Node
-CollisionPolygon2D
-CharacterBody2D

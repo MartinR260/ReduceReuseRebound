@@ -26,7 +26,7 @@ func _process(delta):
 			#print(player_distance)
 			if player and player_distance <= 40:
 				var player_direction = (player.global_position - global_position).normalized()
-				var player_force = 125
+				var player_force = 140 #125 to prevent 4-block jump
 				player.velocity += player_direction * player_force 
 				
 			var explosion = explosion_scene.instantiate()

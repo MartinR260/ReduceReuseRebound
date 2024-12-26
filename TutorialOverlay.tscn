@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2w06c0nc4801"]
+
+[ext_resource type="Texture2D" uid="uid://dciy32sal57px" path="res://kenney_assets/TutorialOverlay.png" id="1_f1xio"]
+[ext_resource type="Texture2D" uid="uid://bves5jr5eqqp2" path="res://kenney_assets/TutorialOverlayPage2.png" id="2_fv5x8"]
+[ext_resource type="Texture2D" uid="uid://dnomq3rk0mxkk" path="res://kenney_assets/TutorialOverlayPage3.png" id="3_un2is"]
+
+[node name="TutorialOverlay" type="Control"]
+layout_mode = 3
+anchor_right = 3.0
+anchor_bottom = 1.0
+offset_right = -0.00012207
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Page1" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_f1xio")
+
+[node name="Page2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 576.0
+offset_right = 1152.0
+offset_bottom = 324.0
+texture = ExtResource("2_fv5x8")
+
+[node name="Page3" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1152.0
+offset_right = 1728.0
+offset_bottom = 324.0
+texture = ExtResource("3_un2is")

@@ -58,13 +58,24 @@ func _physics_process(delta):
 	if input.x == 0:
 		apply_friction()
 	else:
-
 		if is_on_wall():
 			sprite.animation = "Still"
 			sprite.play()
 		else:
 			sprite.animation = "Walk"
 			sprite.play()
+			
+		if collected_blocks < 3:
+			if input.x > 0:
+				input.x -= collected_blocks * 0.1
+			elif input.x < 0:
+				input.x += collected_blocks * 0.1
+		else:
+			if input.x > 0:
+				input.x -= 0.3
+			elif input.x < 0:
+				input.x += 0.3
+				
 		apply_acceleration(input.x)
 		
 	if build_mode:
@@ -102,6 +113,8 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY
 		if collected_blocks < 5:
 			velocity.y += collected_blocks * 15
+		else:
+			velocity.y += 60
 	else:
 		if Input.is_action_just_released("jump"):
 			velocity.y = max(-80, velocity.y)
@@ -197,7 +210,7 @@ func check_cursor_overlap(cursor_position):
 		return false
 
 func is_placer_close_enough(mouse_position):
-	if global_position.x - mouse_position.x >= -48 and global_position.x - mouse_position.x <= 48 and global_position.y - mouse_position.y >= -50 and global_position.y - mouse_position.y <= 40:
+	if (!(global_position.y - mouse_position.y <= 22 and global_position.y - mouse_position.y >= -13) or !(global_position.x - mouse_position.x >= -10 and global_position.x - mouse_position.x <= 10)) and (global_position.x - mouse_position.x >= -48 and global_position.x - mouse_position.x <= 48 and global_position.y - mouse_position.y >= -50 and global_position.y - mouse_position.y <= 40):
 		return true
 	else:
 		return false

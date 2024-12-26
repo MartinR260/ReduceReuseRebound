@@ -1,14 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqdbw0cy0tpc7"]
+[gd_scene load_steps=7 format=3 uid="uid://cqdbw0cy0tpc7"]
 
 [ext_resource type="PackedScene" uid="uid://buvtgy4fsaa3k" path="res://Player.tscn" id="2_6aqpw"]
 [ext_resource type="PackedScene" uid="uid://ckahgc5m6uiwc" path="res://Breakable.tscn" id="3_etvib"]
 [ext_resource type="PackedScene" uid="uid://d16ijhl0hcqyd" path="res://TileMap.tscn" id="3_r81nl"]
+[ext_resource type="PackedScene" uid="uid://2005susppklk" path="res://UI.tscn" id="5_jywlr"]
 [ext_resource type="Texture2D" uid="uid://cacphq2ieh63a" path="res://kenney_assets/cursor_block.png" id="5_orer0"]
+[ext_resource type="PackedScene" uid="uid://b2w06c0nc4801" path="res://TutorialOverlay.tscn" id="6_5swms"]
 
 [node name="World" type="Node2D"]
-
-[node name="Player" parent="." instance=ExtResource("2_6aqpw")]
-position = Vector2(29, 220)
 
 [node name="Breakables" type="Node" parent="."]
 
@@ -19,26 +18,54 @@ position = Vector2(1035, 243)
 position = Vector2(1035, 225)
 
 [node name="Breakable3" parent="Breakables" instance=ExtResource("3_etvib")]
-position = Vector2(1557, 261)
+position = Vector2(1611, 225)
 
 [node name="Breakable4" parent="Breakables" instance=ExtResource("3_etvib")]
 position = Vector2(1611, 243)
 
 [node name="Breakable5" parent="Breakables" instance=ExtResource("3_etvib")]
-position = Vector2(1611, 225)
+position = Vector2(1629, 225)
 
 [node name="Breakable6" parent="Breakables" instance=ExtResource("3_etvib")]
 position = Vector2(1629, 243)
 
 [node name="Breakable7" parent="Breakables" instance=ExtResource("3_etvib")]
-position = Vector2(1629, 225)
+position = Vector2(1647, 225)
+
+[node name="Breakable8" parent="Breakables" instance=ExtResource("3_etvib")]
+position = Vector2(1647, 243)
+
+[node name="Breakable9" parent="Breakables" instance=ExtResource("3_etvib")]
+position = Vector2(1971, 225)
+
+[node name="Breakable10" parent="Breakables" instance=ExtResource("3_etvib")]
+position = Vector2(1971, 243)
+
+[node name="Breakable11" parent="Breakables" instance=ExtResource("3_etvib")]
+position = Vector2(2025, 225)
+
+[node name="Breakable12" parent="Breakables" instance=ExtResource("3_etvib")]
+position = Vector2(2025, 243)
 
 [node name="TileMap" parent="." instance=ExtResource("3_r81nl")]
 
 [node name="Camera" type="Camera2D" parent="."]
 offset = Vector2(288, 162)
 
+[node name="UI" parent="Camera" instance=ExtResource("5_jywlr")]
+
+[node name="TutorialOverlay" parent="." instance=ExtResource("6_5swms")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
 [node name="Placer" type="Sprite2D" parent="."]
 position = Vector2(-9, -9)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("5_orer0")
+
+[node name="Player" parent="." instance=ExtResource("2_6aqpw")]
+position = Vector2(53, 220)

@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://2005susppklk"]
+
+[ext_resource type="Texture2D" uid="uid://kpp2idxwi5gn" path="res://kenney_assets/build_mode_ui.png" id="1_1nwlj"]
+[ext_resource type="Script" path="res://UI.gd" id="1_bn7es"]
+[ext_resource type="Texture2D" uid="uid://dd38netcspc8i" path="res://kenney_assets/selected_gun_mode_ui.png" id="2_7y8i3"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bn7es")
+
+[node name="GunModeIcon" type="TextureRect" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 450.0
+offset_top = 261.0
+offset_right = 495.0
+offset_bottom = 306.0
+texture = ExtResource("2_7y8i3")
+
+[node name="BuildModeIcon" type="TextureRect" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 513.0
+offset_top = 261.0
+offset_right = 558.0
+offset_bottom = 306.0
+texture = ExtResource("1_1nwlj")
