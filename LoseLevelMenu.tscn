@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://bu0i0q3d5kktr"]
+
+[ext_resource type="Script" path="res://LoseLevelMenu.gd" id="1_5bdnk"]
+[ext_resource type="Texture2D" uid="uid://cfy5mqjkum2s8" path="res://kenney_assets/pause_background.png" id="1_qoi8x"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_24rqe"]
+font_size = 45
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="LoseLevelMenu" type="Control"]
+process_mode = 3
+z_index = 5
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5bdnk")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_qoi8x")
+
+[node name="Label" type="Label" parent="."]
+offset_top = 72.0
+offset_right = 576.0
+offset_bottom = 141.0
+text = "The Plane Flew Away!"
+label_settings = SubResource("LabelSettings_24rqe")
+horizontal_alignment = 1
+
+[node name="Retry" type="Button" parent="."]
+layout_mode = 0
+offset_left = 198.0
+offset_top = 162.0
+offset_right = 378.0
+offset_bottom = 193.0
+text = "Retry"
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 198.0
+offset_top = 207.0
+offset_right = 378.0
+offset_bottom = 238.0
+text = "Quit to Main Menu"
+
+[connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

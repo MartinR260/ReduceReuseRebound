@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://c33yeiqsdiosn"]
+
+[ext_resource type="Script" path="res://FinishLevelArea.gd" id="1_5m2ak"]
+[ext_resource type="Texture2D" uid="uid://beixo0dq0juiw" path="res://kenney_assets/EndLevel.png" id="1_yvi82"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4n1uh"]
+size = Vector2(19.8, 16.2)
+
+[node name="FinishLevelArea" type="Area2D"]
+scale = Vector2(5, 5)
+script = ExtResource("1_5m2ak")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.78814e-07, 1.78814e-07)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("1_yvi82")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.899999, 0.899999)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_4n1uh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

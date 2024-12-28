@@ -7,6 +7,7 @@ var breakable_scene = preload("res://Breakable.tscn")
 @onready var camera = $"../Camera"
 @onready var ui = $"../UI"
 @onready var pause_menu = $"../PauseMenu"
+@onready var finished_level_menu = $"../FinishedLevelMenu"
 
 @onready var crosshair = preload("res://kenney_assets/cursor_crosshair.png")
 @onready var dimmed_crosshair = preload("res://kenney_assets/dimmed_crosshair.png")
@@ -30,10 +31,13 @@ var build_mode = false
 var gun_mode = true
 var mouse_offset = Vector2.ZERO
 
+
 func _physics_process(delta):
+	
 	camera.global_position.x = 576 * (int(global_position.x) / 576) #the number is equal to the screen width
 	ui.global_position.x = 576 * (int(global_position.x) / 576)
 	pause_menu.global_position.x = 576 * (int(global_position.x) / 576)
+	finished_level_menu.global_position.x = 576 * (int(global_position.x) / 576)
 	
 	if global_position.y >= 330:
 		global_position.x = 576 * (int(global_position.x) / 576) + 50
@@ -209,7 +213,7 @@ func check_cursor_overlap(cursor_position):
 	
 	if collision:
 		# print(collision[0])
-		if collision[0].collider.name == "Player" or collision[0].collider.name == "TileMap" or collision[0].collider.name.begins_with("Breakable") or collision[0].collider.name.begins_with("Breakable") or collision[0].collider.name.begins_with("@RigidBody2D"):
+		if collision[0].collider.name == "Player" or collision[0].collider.name == "TileMap" or collision[0].collider.name == "TileMap2" or collision[0].collider.name.begins_with("Breakable") or collision[0].collider.name.begins_with("Breakable") or collision[0].collider.name.begins_with("@RigidBody2D"):
 			return true
 	else:
 		return false

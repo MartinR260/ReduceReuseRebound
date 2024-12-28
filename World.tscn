@@ -1,12 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://dpy15nhsl1qdm"]
+[gd_scene load_steps=11 format=3 uid="uid://dpy15nhsl1qdm"]
 
 [ext_resource type="PackedScene" uid="uid://bqfxfyw4uwwgh" path="res://Player.tscn" id="2_6aqpw"]
-[ext_resource type="PackedScene" path="res://Breakable.tscn" id="3_etvib"]
+[ext_resource type="PackedScene" uid="uid://ckahgc5m6uiwc" path="res://Breakable.tscn" id="3_etvib"]
 [ext_resource type="PackedScene" uid="uid://cqtaij4bwyoct" path="res://TileMap.tscn" id="3_r81nl"]
 [ext_resource type="PackedScene" uid="uid://dav78fev1rxn0" path="res://UI.tscn" id="5_jywlr"]
 [ext_resource type="Texture2D" uid="uid://cacphq2ieh63a" path="res://kenney_assets/cursor_block.png" id="5_orer0"]
 [ext_resource type="PackedScene" uid="uid://cd5c2ft0ent47" path="res://TutorialOverlay.tscn" id="6_5swms"]
 [ext_resource type="PackedScene" uid="uid://kaovd1amck3a" path="res://PauseMenu.tscn" id="7_xyepe"]
+[ext_resource type="PackedScene" uid="uid://bxeb082lvpivl" path="res://Camera.tscn" id="8_bqwec"]
+[ext_resource type="PackedScene" uid="uid://b37qsvrdy58fk" path="res://FinishedLevelMenu.tscn" id="9_hbogw"]
+[ext_resource type="PackedScene" uid="uid://c33yeiqsdiosn" path="res://FinishLevelArea.tscn" id="10_387f6"]
 
 [node name="World" type="Node2D"]
 
@@ -16,9 +19,6 @@
 position = Vector2(-9, -9)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("5_orer0")
-
-[node name="Camera" type="Camera2D" parent="."]
-offset = Vector2(288, 162)
 
 [node name="TutorialOverlay" parent="." instance=ExtResource("6_5swms")]
 anchors_preset = 0
@@ -82,7 +82,15 @@ position = Vector2(2547, 243)
 
 [node name="Player" parent="." instance=ExtResource("2_6aqpw")]
 z_index = 2
-position = Vector2(35, 220)
+position = Vector2(36, 220)
 
 [node name="PauseMenu" parent="." instance=ExtResource("7_xyepe")]
 visible = false
+
+[node name="Camera" parent="." instance=ExtResource("8_bqwec")]
+
+[node name="FinishedLevelMenu" parent="." instance=ExtResource("9_hbogw")]
+visible = false
+
+[node name="FinishLevelArea" parent="." instance=ExtResource("10_387f6")]
+position = Vector2(3366, 153)

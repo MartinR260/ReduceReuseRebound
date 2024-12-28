@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://50buw1see2mn"]
+
+[ext_resource type="Script" path="res://Timer.gd" id="1_aghir"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mlx4g"]
+font_size = 24
+
+[node name="Timer" type="Control"]
+z_index = 4
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aghir")
+time_limit = 300.0
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Button" type="Button" parent="."]
+process_mode = 4
+offset_left = 9.0
+offset_top = 279.0
+offset_right = 144.0
+offset_bottom = 315.0
+mouse_filter = 2
+disabled = true
+text = " "
+
+[node name="Label" type="Label" parent="."]
+offset_left = 21.0
+offset_top = 279.0
+offset_right = 133.0
+offset_bottom = 315.0
+text = "00:00:000"
+label_settings = SubResource("LabelSettings_mlx4g")

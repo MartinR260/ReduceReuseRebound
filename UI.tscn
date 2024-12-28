@@ -25,6 +25,7 @@ grow_vertical = 2
 script = ExtResource("1_bn7es")
 
 [node name="BuildModeIcon" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 513.0
 offset_top = 261.0
 offset_right = 558.0
@@ -32,6 +33,7 @@ offset_bottom = 306.0
 texture = ExtResource("1_1nwlj")
 
 [node name="GunModeIcon" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 450.0
 offset_top = 261.0
 offset_right = 495.0
