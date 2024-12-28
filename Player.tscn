@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://buvtgy4fsaa3k"]
+[gd_scene load_steps=23 format=3 uid="uid://bqfxfyw4uwwgh"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_7li5w"]
 [ext_resource type="Texture2D" uid="uid://h8cxfjmnvgql" path="res://kenney_assets/tilemap-military_packed_enhanced.png" id="2_wfp8h"]

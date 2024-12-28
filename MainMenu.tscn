@@ -1,0 +1,83 @@
+[gd_scene load_steps=7 format=3 uid="uid://b55ewkllfolj2"]
+
+[ext_resource type="Script" path="res://MainMenu.gd" id="1_mo0vh"]
+[ext_resource type="Texture2D" uid="uid://cf6ohs0aiqukx" path="res://kenney_assets/main_menu_background.png" id="2_0oybi"]
+[ext_resource type="Texture2D" uid="uid://bxv4g06c5fagr" path="res://kenney_assets/FinalGameLogo3.png" id="3_aucfj"]
+[ext_resource type="Texture2D" uid="uid://dmmr1b52dwofx" path="res://kenney_assets/GameTitle_Reduce.png" id="4_vsli1"]
+[ext_resource type="Texture2D" uid="uid://dlech7ak0cjqh" path="res://kenney_assets/GameTitle_Reuse.png" id="5_xk0ha"]
+[ext_resource type="Texture2D" uid="uid://cuikw175jr87k" path="res://kenney_assets/GameTitle_Rebound.png" id="6_a8mrc"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -576.0
+offset_bottom = -324.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mo0vh")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 576.0
+offset_bottom = 324.0
+texture = ExtResource("2_0oybi")
+
+[node name="TextureRect2" type="TextureRect" parent="TextureRect"]
+layout_mode = 0
+offset_left = 189.0
+offset_top = 6.0
+offset_right = 289.0
+offset_bottom = 122.0
+scale = Vector2(2, 2)
+texture = ExtResource("3_aucfj")
+stretch_mode = 4
+
+[node name="Title" type="Node" parent="TextureRect"]
+
+[node name="Reduce" type="TextureRect" parent="TextureRect/Title"]
+visible = false
+offset_left = 253.0
+offset_top = 67.0
+offset_right = 322.0
+offset_bottom = 82.0
+texture = ExtResource("4_vsli1")
+stretch_mode = 2
+
+[node name="Reuse" type="TextureRect" parent="TextureRect/Title"]
+visible = false
+offset_left = 259.0
+offset_top = 84.0
+offset_right = 316.0
+offset_bottom = 99.0
+texture = ExtResource("5_xk0ha")
+stretch_mode = 2
+
+[node name="Rebound" type="TextureRect" parent="TextureRect/Title"]
+visible = false
+offset_left = 247.0
+offset_top = 102.0
+offset_right = 328.0
+offset_bottom = 117.0
+texture = ExtResource("6_a8mrc")
+stretch_mode = 2
+
+[node name="NewGame" type="Button" parent="."]
+layout_mode = 2
+offset_left = 180.0
+offset_top = 243.0
+offset_right = 396.0
+offset_bottom = 274.0
+text = "New Game"
+
+[node name="QuitGame" type="Button" parent="."]
+layout_mode = 2
+offset_left = 180.0
+offset_top = 279.0
+offset_right = 396.0
+offset_bottom = 310.0
+text = "Quit"
+
+[connection signal="pressed" from="NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="QuitGame" to="." method="_on_quit_game_pressed"]

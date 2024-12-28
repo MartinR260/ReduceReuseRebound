@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2w06c0nc4801"]
+[gd_scene load_steps=5 format=3 uid="uid://cd5c2ft0ent47"]
 
 [ext_resource type="Texture2D" uid="uid://dciy32sal57px" path="res://kenney_assets/TutorialOverlay.png" id="1_f1xio"]
 [ext_resource type="Texture2D" uid="uid://bves5jr5eqqp2" path="res://kenney_assets/TutorialOverlayPage2.png" id="2_fv5x8"]
-[ext_resource type="Texture2D" uid="uid://dnomq3rk0mxkk" path="res://kenney_assets/TutorialOverlayPage3.png" id="3_un2is"]
+[ext_resource type="Texture2D" uid="uid://b5ay2bestsn5w" path="res://kenney_assets/TutorialOverlayPage3.png" id="3_un2is"]
+[ext_resource type="Texture2D" uid="uid://dnomq3rk0mxkk" path="res://kenney_assets/TutorialOverlayPage4.png" id="4_2mc4u"]
 
 [node name="TutorialOverlay" type="Control"]
+z_index = 1
 layout_mode = 3
 anchor_right = 3.0
 anchor_bottom = 1.0
@@ -31,3 +33,10 @@ offset_left = 1152.0
 offset_right = 1728.0
 offset_bottom = 324.0
 texture = ExtResource("3_un2is")
+
+[node name="Page4" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1728.0
+offset_right = 2304.0
+offset_bottom = 324.0
+texture = ExtResource("4_2mc4u")

@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://kaovd1amck3a"]
+
+[ext_resource type="Texture2D" uid="uid://cfy5mqjkum2s8" path="res://kenney_assets/pause_background.png" id="1_8vnbr"]
+[ext_resource type="Script" path="res://PauseMenu.gd" id="1_nh7yr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pqyrb"]
+font_size = 50
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="InputEventKey" id="InputEventKey_vnnjp"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_eddpx"]
+events = [SubResource("InputEventKey_vnnjp")]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nh7yr")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_8vnbr")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 37.0
+offset_right = 386.0
+offset_bottom = 106.0
+text = "PAUSED"
+label_settings = SubResource("LabelSettings_pqyrb")
+
+[node name="Continue" type="Button" parent="."]
+layout_mode = 0
+offset_left = 198.0
+offset_top = 126.0
+offset_right = 378.0
+offset_bottom = 157.0
+shortcut = SubResource("Shortcut_eddpx")
+text = "Continue"
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 198.0
+offset_top = 171.0
+offset_right = 378.0
+offset_bottom = 202.0
+text = "Quit to Desktop"
+
+[connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

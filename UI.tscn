@@ -1,10 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://2005susppklk"]
+[gd_scene load_steps=9 format=3 uid="uid://dav78fev1rxn0"]
 
 [ext_resource type="Texture2D" uid="uid://kpp2idxwi5gn" path="res://kenney_assets/build_mode_ui.png" id="1_1nwlj"]
 [ext_resource type="Script" path="res://UI.gd" id="1_bn7es"]
 [ext_resource type="Texture2D" uid="uid://dd38netcspc8i" path="res://kenney_assets/selected_gun_mode_ui.png" id="2_7y8i3"]
+[ext_resource type="Texture2D" uid="uid://bu02eurdnryxm" path="res://kenney_assets/pause_button.png" id="4_dg5s1"]
+[ext_resource type="Texture2D" uid="uid://cgf0shsgejvya" path="res://kenney_assets/pause_button_pressed.png" id="5_pg8v8"]
+[ext_resource type="Texture2D" uid="uid://c8aixewg5o61f" path="res://kenney_assets/pause_button_hover.png" id="6_ualwa"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_mw37x"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_esui8"]
+events = [SubResource("InputEventKey_mw37x")]
 
 [node name="UI" type="Control"]
+z_index = 5
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,20 +24,30 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bn7es")
 
+[node name="BuildModeIcon" type="TextureRect" parent="."]
+offset_left = 513.0
+offset_top = 261.0
+offset_right = 558.0
+offset_bottom = 306.0
+texture = ExtResource("1_1nwlj")
+
 [node name="GunModeIcon" type="TextureRect" parent="."]
-z_index = 1
-layout_mode = 0
 offset_left = 450.0
 offset_top = 261.0
 offset_right = 495.0
 offset_bottom = 306.0
 texture = ExtResource("2_7y8i3")
 
-[node name="BuildModeIcon" type="TextureRect" parent="."]
-z_index = 1
-layout_mode = 0
-offset_left = 513.0
-offset_top = 261.0
-offset_right = 558.0
-offset_bottom = 306.0
-texture = ExtResource("1_1nwlj")
+[node name="PauseButton" type="TextureButton" parent="."]
+layout_mode = 2
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 40.0
+offset_bottom = 40.0
+shortcut = SubResource("Shortcut_esui8")
+shortcut_in_tooltip = false
+texture_normal = ExtResource("4_dg5s1")
+texture_pressed = ExtResource("5_pg8v8")
+texture_hover = ExtResource("6_ualwa")
+
+[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]

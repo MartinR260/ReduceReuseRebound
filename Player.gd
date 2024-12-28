@@ -5,6 +5,9 @@ var breakable_scene = preload("res://Breakable.tscn")
 @onready var sprite = $AnimatedSprite2D
 @onready var placing_pointer = $"../Placer"
 @onready var camera = $"../Camera"
+@onready var ui = $"../UI"
+@onready var pause_menu = $"../PauseMenu"
+
 @onready var crosshair = preload("res://kenney_assets/cursor_crosshair.png")
 @onready var dimmed_crosshair = preload("res://kenney_assets/dimmed_crosshair.png")
 @onready var place_allowed = preload("res://kenney_assets/place_allowed.png")
@@ -29,6 +32,8 @@ var mouse_offset = Vector2.ZERO
 
 func _physics_process(delta):
 	camera.global_position.x = 576 * (int(global_position.x) / 576) #the number is equal to the screen width
+	ui.global_position.x = 576 * (int(global_position.x) / 576)
+	pause_menu.global_position.x = 576 * (int(global_position.x) / 576)
 	
 	if global_position.y >= 330:
 		global_position.x = 576 * (int(global_position.x) / 576) + 50
