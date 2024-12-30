@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bm8stkj776xod"]
+[gd_scene load_steps=15 format=3 uid="uid://bm8stkj776xod"]
 
 [ext_resource type="Texture2D" uid="uid://cacphq2ieh63a" path="res://kenney_assets/cursor_block.png" id="1_kwf8y"]
 [ext_resource type="PackedScene" uid="uid://ckahgc5m6uiwc" path="res://Breakable.tscn" id="2_yaort"]
@@ -13,6 +13,16 @@
 [ext_resource type="PackedScene" uid="uid://bu0i0q3d5kktr" path="res://LoseLevelMenu.tscn" id="11_g5xgs"]
 [ext_resource type="Texture2D" uid="uid://r6clmaehq3ka" path="res://kenney_assets/TutorialOverlayRocketJump.png" id="12_bfqug"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_4ly1e"]
+font_size = 35
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8n7ab"]
+font_size = 12
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
 [node name="World2" type="Node2D"]
 
 [node name="Placer" type="Sprite2D" parent="."]
@@ -23,52 +33,16 @@ texture = ExtResource("1_kwf8y")
 [node name="Breakables" type="Node" parent="."]
 
 [node name="Breakable" parent="Breakables" instance=ExtResource("2_yaort")]
-position = Vector2(765, 207)
+position = Vector2(2637, 243)
 
 [node name="Breakable2" parent="Breakables" instance=ExtResource("2_yaort")]
-position = Vector2(747, 207)
+position = Vector2(3303, 171)
 
 [node name="Breakable3" parent="Breakables" instance=ExtResource("2_yaort")]
-position = Vector2(729, 207)
+position = Vector2(765, 207)
 
 [node name="Breakable4" parent="Breakables" instance=ExtResource("2_yaort")]
-position = Vector2(1827, 243)
-
-[node name="Breakable5" parent="Breakables" instance=ExtResource("2_yaort")]
-position = Vector2(1845, 225)
-
-[node name="Breakable6" parent="Breakables" instance=ExtResource("2_yaort")]
-position = Vector2(1845, 243)
-
-[node name="Breakable7" parent="Breakables" instance=ExtResource("2_yaort")]
-position = Vector2(1863, 225)
-
-[node name="Breakable8" parent="Breakables" instance=ExtResource("2_yaort")]
-position = Vector2(1863, 243)
-
-[node name="Breakable9" parent="Breakables" instance=ExtResource("2_yaort")]
-position = Vector2(1809, 225)
-
-[node name="Breakable10" parent="Breakables" instance=ExtResource("2_yaort")]
-position = Vector2(1809, 243)
-
-[node name="Breakable11" parent="Breakables" instance=ExtResource("2_yaort")]
-position = Vector2(1791, 225)
-
-[node name="Breakable12" parent="Breakables" instance=ExtResource("2_yaort")]
-position = Vector2(1791, 243)
-
-[node name="Breakable13" parent="Breakables" instance=ExtResource("2_yaort")]
-position = Vector2(2547, 225)
-
-[node name="Breakable15" parent="Breakables" instance=ExtResource("2_yaort")]
-position = Vector2(2601, 225)
-
-[node name="Breakable16" parent="Breakables" instance=ExtResource("2_yaort")]
-position = Vector2(2601, 243)
-
-[node name="Breakable14" parent="Breakables" instance=ExtResource("2_yaort")]
-position = Vector2(2547, 243)
+position = Vector2(3627, 99)
 
 [node name="Camera" parent="." instance=ExtResource("6_i2ftt")]
 
@@ -76,7 +50,7 @@ position = Vector2(2547, 243)
 z_index = -1
 
 [node name="FinishLevelArea" parent="." instance=ExtResource("8_robpp")]
-position = Vector2(3384, 153)
+position = Vector2(4545, 153)
 
 [node name="TutorialRocketJumpOverlay" type="TextureRect" parent="."]
 offset_left = 1152.0
@@ -89,16 +63,46 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Timer" parent="UI" instance=ExtResource("10_gtuel")]
 layout_mode = 1
-
-[node name="Player" parent="." instance=ExtResource("4_o3a15")]
-z_index = 2
-position = Vector2(45, 180)
+time_limit = 200.0
 
 [node name="LoseLevelMenu" parent="." instance=ExtResource("11_g5xgs")]
 visible = false
+
+[node name="Label" type="Label" parent="LoseLevelMenu"]
+layout_mode = 0
+offset_top = 45.0
+offset_right = 576.0
+offset_bottom = 146.0
+text = "You missed the 
+transmission period!"
+label_settings = SubResource("LabelSettings_4ly1e")
+horizontal_alignment = 1
 
 [node name="FinishedLevelMenu" parent="." instance=ExtResource("7_104cn")]
 visible = false
 
 [node name="PauseMenu" parent="." instance=ExtResource("5_hl0rv")]
 visible = false
+
+[node name="Objective" type="Label" parent="PauseMenu"]
+layout_mode = 0
+offset_top = 99.0
+offset_right = 576.0
+offset_bottom = 146.0
+text = "Objective: Get to the radio station 
+before the transmission gets cut off!"
+label_settings = SubResource("LabelSettings_8n7ab")
+horizontal_alignment = 1
+
+[node name="Objective" type="Label" parent="."]
+offset_left = 306.0
+offset_right = 574.0
+offset_bottom = 47.0
+text = "Objective: Get to the radio station 
+before the transmission gets cut off!"
+label_settings = SubResource("LabelSettings_8n7ab")
+horizontal_alignment = 2
+
+[node name="Player" parent="." instance=ExtResource("4_o3a15")]
+z_index = 2
+position = Vector2(35, 175)

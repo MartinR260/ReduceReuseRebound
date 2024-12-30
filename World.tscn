@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dpy15nhsl1qdm"]
+[gd_scene load_steps=12 format=3 uid="uid://dpy15nhsl1qdm"]
 
 [ext_resource type="PackedScene" uid="uid://bqfxfyw4uwwgh" path="res://Player.tscn" id="2_6aqpw"]
 [ext_resource type="PackedScene" uid="uid://ckahgc5m6uiwc" path="res://Breakable.tscn" id="3_etvib"]
@@ -10,6 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://bxeb082lvpivl" path="res://Camera.tscn" id="8_bqwec"]
 [ext_resource type="PackedScene" uid="uid://b37qsvrdy58fk" path="res://FinishedLevelMenu.tscn" id="9_hbogw"]
 [ext_resource type="PackedScene" uid="uid://c33yeiqsdiosn" path="res://FinishLevelArea.tscn" id="10_387f6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tl6jp"]
+font_size = 12
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [node name="World" type="Node2D"]
 
@@ -86,6 +91,16 @@ position = Vector2(36, 220)
 
 [node name="PauseMenu" parent="." instance=ExtResource("7_xyepe")]
 visible = false
+
+[node name="Objective" type="Label" parent="PauseMenu"]
+layout_mode = 0
+offset_top = 99.0
+offset_right = 576.0
+offset_bottom = 146.0
+text = "Objective: Prepare for deployment
+by completing the obstacle course!"
+label_settings = SubResource("LabelSettings_tl6jp")
+horizontal_alignment = 1
 
 [node name="Camera" parent="." instance=ExtResource("8_bqwec")]
 

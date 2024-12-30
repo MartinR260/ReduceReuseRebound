@@ -47,7 +47,6 @@ offset_top = 4.0
 offset_right = 40.0
 offset_bottom = 40.0
 shortcut = SubResource("Shortcut_esui8")
-shortcut_in_tooltip = false
 texture_normal = ExtResource("4_dg5s1")
 texture_pressed = ExtResource("5_pg8v8")
 texture_hover = ExtResource("6_ualwa")

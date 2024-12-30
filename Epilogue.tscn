@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcqbvx51t7bs8"]
+
+[ext_resource type="Script" path="res://Epilogue.gd" id="1_ysbfs"]
+[ext_resource type="Texture2D" uid="uid://x6ikmsgi7jvy" path="res://kenney_assets/Epilogue.png" id="2_hlpeo"]
+
+[node name="Epilogue" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ysbfs")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 576.0
+offset_bottom = 324.0
+texture = ExtResource("2_hlpeo")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 252.0
+offset_right = 567.0
+offset_bottom = 315.0
+text = "You made it! Despite the odds, you managed to 
+evacuate on time and survive! Congratulations!"
+
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]

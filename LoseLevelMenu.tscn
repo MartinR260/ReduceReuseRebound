@@ -1,12 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bu0i0q3d5kktr"]
+[gd_scene load_steps=3 format=3 uid="uid://bu0i0q3d5kktr"]
 
 [ext_resource type="Script" path="res://LoseLevelMenu.gd" id="1_5bdnk"]
 [ext_resource type="Texture2D" uid="uid://cfy5mqjkum2s8" path="res://kenney_assets/pause_background.png" id="1_qoi8x"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_24rqe"]
-font_size = 45
-outline_size = 10
-outline_color = Color(0, 0, 0, 1)
 
 [node name="LoseLevelMenu" type="Control"]
 process_mode = 3
@@ -20,17 +15,10 @@ grow_vertical = 2
 script = ExtResource("1_5bdnk")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_qoi8x")
-
-[node name="Label" type="Label" parent="."]
-offset_top = 72.0
-offset_right = 576.0
-offset_bottom = 141.0
-text = "The Plane Flew Away!"
-label_settings = SubResource("LabelSettings_24rqe")
-horizontal_alignment = 1
 
 [node name="Retry" type="Button" parent="."]
 layout_mode = 0

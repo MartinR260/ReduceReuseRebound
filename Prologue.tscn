@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0kq6y1b3c6v6"]
+
+[ext_resource type="Script" path="res://Prologue.gd" id="1_u7q32"]
+[ext_resource type="Texture2D" uid="uid://dy4yl5kgm61ad" path="res://kenney_assets/Prologue_Page1.png" id="1_wf401"]
+[ext_resource type="Texture2D" uid="uid://3m164vhc24na" path="res://kenney_assets/Prologue_Page2.png" id="3_h6m3u"]
+
+[node name="Prologue" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u7q32")
+
+[node name="Page1" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 576.0
+offset_bottom = 324.0
+texture = ExtResource("1_wf401")
+
+[node name="Page2" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 576.0
+offset_bottom = 324.0
+texture = ExtResource("3_h6m3u")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 252.0
+offset_right = 567.0
+offset_bottom = 315.0
+text = "You are a soldier who is about to be deployed to a battlefield."
+
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]

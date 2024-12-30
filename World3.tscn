@@ -1,0 +1,130 @@
+[gd_scene load_steps=15 format=3 uid="uid://bp5es31y07g24"]
+
+[ext_resource type="Texture2D" uid="uid://cacphq2ieh63a" path="res://kenney_assets/cursor_block.png" id="1_l7m8p"]
+[ext_resource type="PackedScene" uid="uid://ckahgc5m6uiwc" path="res://Breakable.tscn" id="2_emvhi"]
+[ext_resource type="PackedScene" uid="uid://bxeb082lvpivl" path="res://Camera.tscn" id="3_8266g"]
+[ext_resource type="Texture2D" uid="uid://ii0rjxlyr6wb" path="res://kenney_assets/RadioStation.png" id="5_86m72"]
+[ext_resource type="PackedScene" uid="uid://c33yeiqsdiosn" path="res://FinishLevelArea.tscn" id="5_hrt5v"]
+[ext_resource type="PackedScene" uid="uid://b4a8wouf7obki" path="res://TileMap3.tscn" id="6_u0ypq"]
+[ext_resource type="PackedScene" uid="uid://dav78fev1rxn0" path="res://UI.tscn" id="7_3nbe4"]
+[ext_resource type="PackedScene" uid="uid://50buw1see2mn" path="res://Timer.tscn" id="8_3a6bu"]
+[ext_resource type="PackedScene" uid="uid://bu0i0q3d5kktr" path="res://LoseLevelMenu.tscn" id="9_3plxv"]
+[ext_resource type="PackedScene" uid="uid://b37qsvrdy58fk" path="res://FinishedLevelMenu.tscn" id="10_mds3a"]
+[ext_resource type="PackedScene" uid="uid://kaovd1amck3a" path="res://PauseMenu.tscn" id="11_asaut"]
+[ext_resource type="PackedScene" uid="uid://bqfxfyw4uwwgh" path="res://Player.tscn" id="12_dubod"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4ly1e"]
+font_size = 45
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8n7ab"]
+font_size = 12
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="World3" type="Node2D"]
+
+[node name="Placer" type="Sprite2D" parent="."]
+position = Vector2(-9, -9)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_l7m8p")
+
+[node name="Breakables" type="Node" parent="."]
+
+[node name="Breakable" parent="Breakables" instance=ExtResource("2_emvhi")]
+position = Vector2(171, 207)
+
+[node name="Breakable2" parent="Breakables" instance=ExtResource("2_emvhi")]
+position = Vector2(189, 207)
+
+[node name="Breakable3" parent="Breakables" instance=ExtResource("2_emvhi")]
+position = Vector2(207, 207)
+
+[node name="Breakable4" parent="Breakables" instance=ExtResource("2_emvhi")]
+position = Vector2(2475, 189)
+
+[node name="Breakable5" parent="Breakables" instance=ExtResource("2_emvhi")]
+position = Vector2(2475, 207)
+
+[node name="Breakable6" parent="Breakables" instance=ExtResource("2_emvhi")]
+position = Vector2(2547, 189)
+
+[node name="Breakable7" parent="Breakables" instance=ExtResource("2_emvhi")]
+position = Vector2(2547, 207)
+
+[node name="Breakable8" parent="Breakables" instance=ExtResource("2_emvhi")]
+position = Vector2(2601, 189)
+
+[node name="Breakable9" parent="Breakables" instance=ExtResource("2_emvhi")]
+position = Vector2(2601, 207)
+
+[node name="Breakable10" parent="Breakables" instance=ExtResource("2_emvhi")]
+position = Vector2(2673, 189)
+
+[node name="Breakable11" parent="Breakables" instance=ExtResource("2_emvhi")]
+position = Vector2(2673, 207)
+
+[node name="Camera" parent="." instance=ExtResource("3_8266g")]
+
+[node name="FinishLevelArea" parent="." instance=ExtResource("5_hrt5v")]
+position = Vector2(3384, 153)
+
+[node name="RadioTower" type="TextureRect" parent="."]
+z_index = -1
+offset_left = -12.0
+offset_top = 108.0
+offset_right = 3.0
+offset_bottom = 123.0
+scale = Vector2(6, 6)
+texture = ExtResource("5_86m72")
+
+[node name="TileMap3" parent="." instance=ExtResource("6_u0ypq")]
+
+[node name="Player" parent="." instance=ExtResource("12_dubod")]
+z_index = 2
+position = Vector2(35, 175)
+
+[node name="UI" parent="." instance=ExtResource("7_3nbe4")]
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" parent="UI" instance=ExtResource("8_3a6bu")]
+layout_mode = 1
+time_limit = 150.0
+
+[node name="LoseLevelMenu" parent="." instance=ExtResource("9_3plxv")]
+visible = false
+
+[node name="Label" type="Label" parent="LoseLevelMenu"]
+layout_mode = 0
+offset_top = 72.0
+offset_right = 576.0
+offset_bottom = 135.0
+text = "The plane took off!"
+label_settings = SubResource("LabelSettings_4ly1e")
+horizontal_alignment = 1
+
+[node name="FinishedLevelMenu" parent="." instance=ExtResource("10_mds3a")]
+visible = false
+
+[node name="PauseMenu" parent="." instance=ExtResource("11_asaut")]
+visible = false
+
+[node name="Objective" type="Label" parent="PauseMenu"]
+layout_mode = 0
+offset_top = 99.0
+offset_right = 576.0
+offset_bottom = 146.0
+text = "Objective: Get to the plane 
+before it evacuates from the area!"
+label_settings = SubResource("LabelSettings_8n7ab")
+horizontal_alignment = 1
+
+[node name="Objective" type="Label" parent="."]
+offset_left = 306.0
+offset_right = 574.0
+offset_bottom = 47.0
+text = "Objective: Get to the plane 
+before it evacuates from the area!"
+label_settings = SubResource("LabelSettings_8n7ab")
+horizontal_alignment = 2

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://beixo0dq0juiw" path="res://kenney_assets/EndLevel.png" id="1_yvi82"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4n1uh"]
-size = Vector2(19.8, 16.2)
+size = Vector2(19.8, 18)
 
 [node name="FinishLevelArea" type="Area2D"]
 scale = Vector2(5, 5)
@@ -16,7 +16,7 @@ scale = Vector2(1.2, 1.2)
 texture = ExtResource("1_yvi82")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.899999, 0.899999)
+position = Vector2(-0.899999, -1.33514e-06)
 scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_4n1uh")
 

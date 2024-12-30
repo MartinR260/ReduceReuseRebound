@@ -1,6 +1,7 @@
-Node
-TextureRect
 Button
+TextureRect
+VideoStreamPlayer
+Node
 TextureButton
 Label
 Timer
@@ -11,4 +12,3 @@ VBoxContainer
 Control
 MarginContainer
 SubViewport
-Container

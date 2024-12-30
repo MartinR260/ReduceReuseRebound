@@ -21,6 +21,7 @@ autostart = true
 
 [node name="Button" type="Button" parent="."]
 process_mode = 4
+layout_mode = 0
 offset_left = 9.0
 offset_top = 279.0
 offset_right = 144.0
@@ -30,6 +31,7 @@ disabled = true
 text = " "
 
 [node name="Label" type="Label" parent="."]
+layout_mode = 0
 offset_left = 21.0
 offset_top = 279.0
 offset_right = 133.0
