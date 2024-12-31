@@ -3,6 +3,7 @@ extends RigidBody2D
 @export var MAX_SPEED = 1000.0
 @onready var debris_scene = preload("res://DebrisParticle.tscn")
 @onready var explosion_scene = preload("res://Explosion.tscn")
+
 signal broken_block
 
 var acceleration = 0
@@ -21,6 +22,9 @@ func _process(delta):
 	var collision = move_and_collide(velocity)
 	if collision:
 		if collision.get_collider().name != "Player":
+			var explosion_sound = get_node("../Explosion")
+			explosion_sound.play()
+			
 			var player = get_node("../Player")
 			var player_distance = global_position.distance_to(player.global_position)
 			#print(player_distance)

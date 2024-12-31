@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bm8stkj776xod"]
+[gd_scene load_steps=16 format=3 uid="uid://bm8stkj776xod"]
 
 [ext_resource type="Texture2D" uid="uid://cacphq2ieh63a" path="res://kenney_assets/cursor_block.png" id="1_kwf8y"]
 [ext_resource type="PackedScene" uid="uid://ckahgc5m6uiwc" path="res://Breakable.tscn" id="2_yaort"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://50buw1see2mn" path="res://Timer.tscn" id="10_gtuel"]
 [ext_resource type="PackedScene" uid="uid://bu0i0q3d5kktr" path="res://LoseLevelMenu.tscn" id="11_g5xgs"]
 [ext_resource type="Texture2D" uid="uid://r6clmaehq3ka" path="res://kenney_assets/TutorialOverlayRocketJump.png" id="12_bfqug"]
+[ext_resource type="AudioStream" uid="uid://bk33d50xdrw2f" path="res://sound_effects/explosion.wav" id="13_5cijl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4ly1e"]
 font_size = 35
@@ -106,3 +107,9 @@ horizontal_alignment = 2
 [node name="Player" parent="." instance=ExtResource("4_o3a15")]
 z_index = 2
 position = Vector2(35, 175)
+
+[node name="Explosion" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_5cijl")
+volume_db = -2.0
+max_distance = 9.22337e+18
+panning_strength = 0.25

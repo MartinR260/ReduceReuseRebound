@@ -2,7 +2,9 @@ extends Control
 
 @onready var timer_label = $Label
 @onready var timer = $Timer
-@onready var lose_level_menu = $"../LoseLevelMenu"
+@onready var lose_level_menu = $"../../LoseLevelMenu"
+@onready var warning_rect = $Warning
+
 @export var time_limit = 60.0
 
 var time_remaining = time_limit
@@ -14,6 +16,8 @@ func _ready():
 
 func _process(delta):
 	time_remaining -= delta
+	if time_remaining <= 30:
+		warning_rect.visible = true
 	if time_remaining <= 0:
 		time_remaining = 0
 		on_time_over()

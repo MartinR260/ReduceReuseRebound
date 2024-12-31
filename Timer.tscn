@@ -16,9 +16,6 @@ grow_vertical = 2
 script = ExtResource("1_aghir")
 time_limit = 300.0
 
-[node name="Timer" type="Timer" parent="."]
-autostart = true
-
 [node name="Button" type="Button" parent="."]
 process_mode = 4
 layout_mode = 0
@@ -29,6 +26,18 @@ offset_bottom = 315.0
 mouse_filter = 2
 disabled = true
 text = " "
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Warning" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 9.0
+offset_top = 279.0
+offset_right = 144.0
+offset_bottom = 315.0
+color = Color(0.670588, 0.172549, 0.164706, 1)
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dpy15nhsl1qdm"]
+[gd_scene load_steps=13 format=3 uid="uid://dpy15nhsl1qdm"]
 
 [ext_resource type="PackedScene" uid="uid://bqfxfyw4uwwgh" path="res://Player.tscn" id="2_6aqpw"]
 [ext_resource type="PackedScene" uid="uid://ckahgc5m6uiwc" path="res://Breakable.tscn" id="3_etvib"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bxeb082lvpivl" path="res://Camera.tscn" id="8_bqwec"]
 [ext_resource type="PackedScene" uid="uid://b37qsvrdy58fk" path="res://FinishedLevelMenu.tscn" id="9_hbogw"]
 [ext_resource type="PackedScene" uid="uid://c33yeiqsdiosn" path="res://FinishLevelArea.tscn" id="10_387f6"]
+[ext_resource type="AudioStream" uid="uid://bk33d50xdrw2f" path="res://sound_effects/explosion.wav" id="11_05ns0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tl6jp"]
 font_size = 12
@@ -109,3 +110,9 @@ visible = false
 
 [node name="FinishLevelArea" parent="." instance=ExtResource("10_387f6")]
 position = Vector2(3366, 153)
+
+[node name="Explosion" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_05ns0")
+volume_db = -2.0
+max_distance = 9.22337e+18
+panning_strength = 0.25

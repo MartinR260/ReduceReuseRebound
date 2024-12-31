@@ -1,7 +1,12 @@
-[gd_scene load_steps=23 format=3 uid="uid://bqfxfyw4uwwgh"]
+[gd_scene load_steps=28 format=3 uid="uid://bqfxfyw4uwwgh"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_7li5w"]
 [ext_resource type="Texture2D" uid="uid://h8cxfjmnvgql" path="res://kenney_assets/tilemap-military_packed_enhanced.png" id="2_wfp8h"]
+[ext_resource type="AudioStream" uid="uid://cef4q66d3ys76" path="res://sound_effects/walk.wav" id="3_f37vi"]
+[ext_resource type="AudioStream" uid="uid://dotpmpqwi3bv0" path="res://sound_effects/jump.wav" id="4_327om"]
+[ext_resource type="AudioStream" uid="uid://dikxsvi0hhe4v" path="res://sound_effects/shoot.wav" id="5_7oy0u"]
+[ext_resource type="AudioStream" uid="uid://bov378ny7k0qj" path="res://sound_effects/place.wav" id="6_ipjhh"]
+[ext_resource type="AudioStream" uid="uid://bro7hagt2dk3b" path="res://sound_effects/fall.wav" id="7_eqwad"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3iwym"]
 atlas = ExtResource("2_wfp8h")
@@ -417,3 +422,35 @@ frame_progress = 0.925371
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_l6ww5")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Walk" type="AudioStreamPlayer2D" parent="Node"]
+stream = ExtResource("3_f37vi")
+volume_db = -3.0
+max_distance = 9.22337e+18
+panning_strength = 0.25
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="Node"]
+stream = ExtResource("4_327om")
+volume_db = -3.0
+max_distance = 9.22337e+18
+panning_strength = 0.25
+
+[node name="Shoot" type="AudioStreamPlayer2D" parent="Node"]
+stream = ExtResource("5_7oy0u")
+volume_db = -15.0
+max_distance = 9.22337e+18
+panning_strength = 0.25
+
+[node name="Place" type="AudioStreamPlayer2D" parent="Node"]
+stream = ExtResource("6_ipjhh")
+volume_db = 2.0
+max_distance = 9.22337e+18
+panning_strength = 0.25
+
+[node name="Fall" type="AudioStreamPlayer2D" parent="Node"]
+stream = ExtResource("7_eqwad")
+volume_db = -5.0
+max_distance = 9.22337e+18
+panning_strength = 0.25

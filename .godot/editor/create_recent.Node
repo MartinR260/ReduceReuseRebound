@@ -1,7 +1,9 @@
+AudioStreamPlayer2D
+Node
+ColorRect
 Button
 TextureRect
 VideoStreamPlayer
-Node
 TextureButton
 Label
 Timer
@@ -10,5 +12,3 @@ Sprite2D
 Area2D
 VBoxContainer
 Control
-MarginContainer
-SubViewport

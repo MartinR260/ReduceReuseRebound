@@ -3,6 +3,12 @@ var rocket_scene = preload("res://Rocket.tscn")
 var breakable_scene = preload("res://Breakable.tscn")
 
 @onready var sprite = $AnimatedSprite2D
+@onready var walk_sound = $Node/Walk
+@onready var jump_sound = $Node/Jump
+@onready var shoot_sound = $Node/Shoot
+@onready var place_sound = $Node/Place
+@onready var fall_sound = $Node/Fall
+
 @onready var placing_pointer = $"../Placer"
 @onready var camera = $"../Camera"
 @onready var ui = $"../UI"
@@ -30,7 +36,8 @@ var last_mouse_position = Vector2.ZERO
 var build_mode = false
 var gun_mode = true
 var mouse_offset = Vector2.ZERO
-
+var walk_sound_cooldown = 0.2
+var last_walk_sound_time = 0
 
 func _physics_process(delta):
 	
@@ -40,6 +47,7 @@ func _physics_process(delta):
 	finished_level_menu.global_position.x = 576 * (int(global_position.x) / 576)
 	
 	if global_position.y >= 330:
+		fall_sound.play()
 		global_position.x = 576 * (int(global_position.x) / 576) + 50
 		global_position.y = 100
 		velocity.y = 0
@@ -71,6 +79,9 @@ func _physics_process(delta):
 			sprite.animation = "Still"
 			sprite.play()
 		else:
+			if is_on_floor() and ((Time.get_ticks_msec() / 1000.0) - last_walk_sound_time > walk_sound_cooldown):
+				last_walk_sound_time = Time.get_ticks_msec() / 1000.0
+				walk_sound.play()
 			sprite.animation = "Walk"
 			sprite.play()
 			
@@ -117,6 +128,7 @@ func _physics_process(delta):
 		
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and (is_on_floor() or double_jump):
+		jump_sound.play()
 		double_jump = false;
 		air_time /= 1.5
 		velocity.y = JUMP_VELOCITY
@@ -150,6 +162,7 @@ func _physics_process(delta):
 		
 		
 	if Input.is_action_just_pressed("left_click") and gun_mode and ((Time.get_ticks_msec() / 1000.0) - last_shot_time >= cooldown_time):
+		shoot_sound.play()
 		last_shot_time = (Time.get_ticks_msec() / 1000.0) 
 		var rocket = rocket_scene.instantiate()
 		rocket.direction = direction.angle()
@@ -174,6 +187,7 @@ func _physics_process(delta):
 		
 		
 	if Input.is_action_just_pressed("right_click") and !check_cursor_overlap(mouse_position) and build_mode and collected_blocks > 0 and is_placer_close_enough(mouse_position):
+		place_sound.play()
 		collected_blocks -= 1
 		var breakable = breakable_scene.instantiate()
 		breakable.global_position = placing_pointer.global_position
