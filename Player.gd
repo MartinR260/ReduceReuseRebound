@@ -14,6 +14,7 @@ var breakable_scene = preload("res://Breakable.tscn")
 @onready var ui = $"../UI"
 @onready var pause_menu = $"../PauseMenu"
 @onready var finished_level_menu = $"../FinishedLevelMenu"
+@onready var lose_level_menu = $"../LoseLevelMenu"
 
 @onready var crosshair = preload("res://kenney_assets/cursor_crosshair.png")
 @onready var dimmed_crosshair = preload("res://kenney_assets/dimmed_crosshair.png")
@@ -45,6 +46,7 @@ func _physics_process(delta):
 	ui.global_position.x = 576 * (int(global_position.x) / 576)
 	pause_menu.global_position.x = 576 * (int(global_position.x) / 576)
 	finished_level_menu.global_position.x = 576 * (int(global_position.x) / 576)
+	lose_level_menu.global_position.x = 576 * (int(global_position.x) / 576)
 	
 	if global_position.y >= 330:
 		fall_sound.play()
