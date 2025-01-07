@@ -1,9 +1,6 @@
-res://TileMap.tscn
-res://World2.tscn
 res://World3.tscn
-res://Timer.gd
-res://MainMenu.gd
 res://World.tscn
+res://World2.tscn
 res://Timer.tscn
 res://Player.tscn
 res://Rocket.tscn

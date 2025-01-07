@@ -46,7 +46,8 @@ func _physics_process(delta):
 	ui.global_position.x = 576 * (int(global_position.x) / 576)
 	pause_menu.global_position.x = 576 * (int(global_position.x) / 576)
 	finished_level_menu.global_position.x = 576 * (int(global_position.x) / 576)
-	lose_level_menu.global_position.x = 576 * (int(global_position.x) / 576)
+	if get_tree().current_scene.name != "World":
+		lose_level_menu.global_position.x = 576 * (int(global_position.x) / 576)
 	
 	if global_position.y >= 330:
 		fall_sound.play()
@@ -229,7 +230,7 @@ func check_cursor_overlap(cursor_position):
 	
 	if collision:
 		# print(collision[0])
-		if collision[0].collider.name == "Player" or collision[0].collider.name == "TileMap" or collision[0].collider.name == "TileMap2" or collision[0].collider.name.begins_with("Breakable") or collision[0].collider.name.begins_with("Breakable") or collision[0].collider.name.begins_with("@RigidBody2D"):
+		if collision[0].collider.name == "Player" or collision[0].collider.name == "TileMap" or collision[0].collider.name == "TileMap2" or collision[0].collider.name == "TileMap3" or collision[0].collider.name.begins_with("Breakable") or collision[0].collider.name.begins_with("Breakable") or collision[0].collider.name.begins_with("@RigidBody2D"):
 			return true
 	else:
 		return false
