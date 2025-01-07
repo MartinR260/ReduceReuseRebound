@@ -91,7 +91,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Timer" parent="UI" instance=ExtResource("8_3a6bu")]
 layout_mode = 1
-time_limit = 150.0
+time_limit = 130.0
 
 [node name="LoseLevelMenu" parent="." instance=ExtResource("9_3plxv")]
 visible = false

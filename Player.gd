@@ -39,6 +39,7 @@ var gun_mode = true
 var mouse_offset = Vector2.ZERO
 var walk_sound_cooldown = 0.2
 var last_walk_sound_time = 0
+var blocks_counter
 
 func _physics_process(delta):
 	
@@ -88,16 +89,16 @@ func _physics_process(delta):
 			sprite.animation = "Walk"
 			sprite.play()
 			
-		if collected_blocks < 3:
+		if collected_blocks <= 3:
 			if input.x > 0:
-				input.x -= collected_blocks * 0.1
+				input.x -= collected_blocks * 0.115
 			elif input.x < 0:
-				input.x += collected_blocks * 0.1
+				input.x += collected_blocks * 0.115
 		else:
 			if input.x > 0:
-				input.x -= 0.3
+				input.x -= 0.330
 			elif input.x < 0:
-				input.x += 0.3
+				input.x += 0.330
 				
 		apply_acceleration(input.x)
 		
@@ -135,8 +136,8 @@ func _physics_process(delta):
 		double_jump = false;
 		air_time /= 1.5
 		velocity.y = JUMP_VELOCITY
-		if collected_blocks < 5:
-			velocity.y += collected_blocks * 15
+		if collected_blocks <= 3:
+			velocity.y += collected_blocks * 20
 		else:
 			velocity.y += 60
 	else:
@@ -189,7 +190,20 @@ func _physics_process(delta):
 		get_parent().add_child(rocket)
 		
 		
-	if Input.is_action_just_pressed("right_click") and !check_cursor_overlap(mouse_position) and build_mode and collected_blocks > 0 and is_placer_close_enough(mouse_position):
+	blocks_counter = ui.get_child(4)
+	blocks_counter.text = "Blocks: " + str(collected_blocks)
+# uncomment for color indication of collected blocks
+	#if collected_blocks == 0:
+		#blocks_counter.modulate = Color(1, 1, 1)
+	#if collected_blocks == 1:
+		#blocks_counter.modulate = Color(1, 0.9, 0.4)
+	#if collected_blocks == 2:
+		#blocks_counter.modulate = Color(1, 0.6, 0.2)
+	#if collected_blocks >= 3:
+		#blocks_counter.modulate = Color(1, 0.3, 0.2)
+		
+		
+	if Input.is_action_just_pressed("left_click") and !check_cursor_overlap(mouse_position) and build_mode and collected_blocks > 0 and is_placer_close_enough(mouse_position):
 		place_sound.play()
 		collected_blocks -= 1
 		var breakable = breakable_scene.instantiate()
