@@ -186,7 +186,7 @@ func _physics_process(delta):
 			else:
 				rocket.starting_position = Vector2(global_position.x + 18, global_position.y + 2)
 				
-		rocket.connect("broken_block", func(): collected_blocks+=1)
+		rocket.connect("broken_block", func(): collected_blocks += 1)
 		get_parent().add_child(rocket)
 		
 		

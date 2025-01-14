@@ -5,8 +5,6 @@ res://Timer.tscn
 res://Player.tscn
 res://Rocket.tscn
 res://LoseLevelMenu.tscn
-<<<<<<< Updated upstream
-=======
 res://UI.tscn
-res://Player.gd
->>>>>>> Stashed changes
+res://MainMenu.tscn
+res://MainMenu.gd
