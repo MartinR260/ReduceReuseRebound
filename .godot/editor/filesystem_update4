@@ -1,3 +1,6 @@
+res://MainMenu.tscn
+res://FinishedLevelMenu.gd
+res://MainMenu.gd
 res://World3.tscn
 res://World.tscn
 res://World2.tscn
@@ -6,5 +9,3 @@ res://Player.tscn
 res://Rocket.tscn
 res://LoseLevelMenu.tscn
 res://UI.tscn
-res://MainMenu.tscn
-res://MainMenu.gd
