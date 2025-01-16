@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b37qsvrdy58fk"]
+[gd_scene load_steps=5 format=3 uid="uid://b37qsvrdy58fk"]
 
 [ext_resource type="Script" path="res://FinishedLevelMenu.gd" id="1_6r1d4"]
 [ext_resource type="Texture2D" uid="uid://cfy5mqjkum2s8" path="res://kenney_assets/pause_background.png" id="2_bp2ke"]
@@ -6,6 +6,10 @@
 [sub_resource type="LabelSettings" id="LabelSettings_jiem2"]
 font_size = 50
 outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_oekf2"]
+outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
 [node name="FinishedLevelMenu" type="Control"]
@@ -33,28 +37,38 @@ offset_bottom = 105.0
 text = "        Finished Level!"
 label_settings = SubResource("LabelSettings_jiem2")
 
+[node name="BestTime" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_top = 108.0
+offset_right = 576.0
+offset_bottom = 131.0
+text = "Best Time: 00:00:000"
+label_settings = SubResource("LabelSettings_oekf2")
+horizontal_alignment = 1
+
 [node name="NextLevel" type="Button" parent="."]
 layout_mode = 0
 offset_left = 198.0
-offset_top = 126.0
+offset_top = 144.0
 offset_right = 378.0
-offset_bottom = 157.0
+offset_bottom = 175.0
 text = "Next Level"
 
 [node name="RetryLevel" type="Button" parent="."]
 layout_mode = 0
 offset_left = 198.0
-offset_top = 171.0
+offset_top = 189.0
 offset_right = 378.0
-offset_bottom = 202.0
+offset_bottom = 220.0
 text = "Retry Level"
 
 [node name="QuitToMainMenu" type="Button" parent="."]
 layout_mode = 0
 offset_left = 198.0
-offset_top = 216.0
+offset_top = 234.0
 offset_right = 378.0
-offset_bottom = 247.0
+offset_bottom = 265.0
 text = "Quit to Main Menu"
 
 [connection signal="pressed" from="NextLevel" to="." method="_on_next_level_pressed"]

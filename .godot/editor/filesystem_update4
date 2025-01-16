@@ -1,11 +1,13 @@
-res://MainMenu.tscn
+res://World2.tscn
 res://FinishedLevelMenu.gd
+res://Timer.gd
+res://Timer.tscn
+res://FinishedLevelMenu.tscn
 res://MainMenu.gd
 res://World3.tscn
 res://World.tscn
-res://World2.tscn
-res://Timer.tscn
 res://Player.tscn
 res://Rocket.tscn
 res://LoseLevelMenu.tscn
 res://UI.tscn
+res://MainMenu.tscn
