@@ -1,6 +1,6 @@
 extends CharacterBody2D
-var rocket_scene = preload("res://Rocket.tscn")
-var breakable_scene = preload("res://Breakable.tscn")
+var rocket_scene = preload("res://Scenes/Rocket.tscn")
+var breakable_scene = preload("res://Scenes/Breakable.tscn")
 
 @onready var sprite = $AnimatedSprite2D
 @onready var walk_sound = $Node/Walk

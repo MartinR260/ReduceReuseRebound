@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://50buw1see2mn"]
 
-[ext_resource type="Script" path="res://Timer.gd" id="1_aghir"]
+[ext_resource type="Script" path="res://Scripts/Timer.gd" id="1_aghir"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mlx4g"]
 font_size = 24

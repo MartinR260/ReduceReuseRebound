@@ -1,7 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dl372y25ryio6"]
 
 [ext_resource type="Texture2D" uid="uid://dhytu41cpel5w" path="res://kenney_assets/debris_particle.png" id="1_hh1gg"]
-[ext_resource type="Script" path="res://DebrisParticle.gd" id="1_jn3p2"]
+[ext_resource type="Script" path="res://Scripts/DebrisParticle.gd" id="1_jn3p2"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fdu6w"]
 size = Vector2(3, 3)

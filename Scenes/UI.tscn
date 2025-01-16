@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dav78fev1rxn0"]
 
 [ext_resource type="Texture2D" uid="uid://kpp2idxwi5gn" path="res://kenney_assets/build_mode_ui.png" id="1_1nwlj"]
-[ext_resource type="Script" path="res://UI.gd" id="1_bn7es"]
+[ext_resource type="Script" path="res://Scripts/UI.gd" id="1_bn7es"]
 [ext_resource type="Texture2D" uid="uid://dd38netcspc8i" path="res://kenney_assets/selected_gun_mode_ui.png" id="2_7y8i3"]
 [ext_resource type="Texture2D" uid="uid://bu02eurdnryxm" path="res://kenney_assets/pause_button.png" id="4_dg5s1"]
 [ext_resource type="Texture2D" uid="uid://cgf0shsgejvya" path="res://kenney_assets/pause_button_pressed.png" id="5_pg8v8"]

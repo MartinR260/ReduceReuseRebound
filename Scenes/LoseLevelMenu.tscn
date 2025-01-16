@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bu0i0q3d5kktr"]
 
-[ext_resource type="Script" path="res://LoseLevelMenu.gd" id="1_5bdnk"]
+[ext_resource type="Script" path="res://Scripts/LoseLevelMenu.gd" id="1_5bdnk"]
 [ext_resource type="Texture2D" uid="uid://cfy5mqjkum2s8" path="res://kenney_assets/pause_background.png" id="1_qoi8x"]
 
 [node name="LoseLevelMenu" type="Control"]

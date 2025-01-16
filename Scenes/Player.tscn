@@ -1,6 +1,6 @@
 [gd_scene load_steps=28 format=3 uid="uid://bqfxfyw4uwwgh"]
 
-[ext_resource type="Script" path="res://Player.gd" id="1_7li5w"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_7li5w"]
 [ext_resource type="Texture2D" uid="uid://h8cxfjmnvgql" path="res://kenney_assets/tilemap-military_packed_enhanced.png" id="2_wfp8h"]
 [ext_resource type="AudioStream" uid="uid://cef4q66d3ys76" path="res://sound_effects/walk.wav" id="3_f37vi"]
 [ext_resource type="AudioStream" uid="uid://dotpmpqwi3bv0" path="res://sound_effects/jump.wav" id="4_327om"]

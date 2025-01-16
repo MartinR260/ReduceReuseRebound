@@ -1,8 +1,8 @@
 extends RigidBody2D
 
 @export var MAX_SPEED = 1000.0
-@onready var debris_scene = preload("res://DebrisParticle.tscn")
-@onready var explosion_scene = preload("res://Explosion.tscn")
+@onready var debris_scene = preload("res://Scenes/DebrisParticle.tscn")
+@onready var explosion_scene = preload("res://Scenes/Explosion.tscn")
 
 signal broken_block
 

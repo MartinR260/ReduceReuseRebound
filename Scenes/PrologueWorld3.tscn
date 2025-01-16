@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cs6v5wgtuucmm"]
 
-[ext_resource type="Script" path="res://PrologueWorld3.gd" id="1_885kq"]
+[ext_resource type="Script" path="res://Scripts/PrologueWorld3.gd" id="1_885kq"]
 [ext_resource type="Texture2D" uid="uid://0lwe47eewtby" path="res://kenney_assets/PrologueWorld3_Page1.png" id="2_5k7q1"]
 
 [node name="PrologueWorld3" type="Control"]

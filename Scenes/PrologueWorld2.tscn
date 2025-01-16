@@ -1,9 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://drm1uqu1hdq5k"]
 
 [ext_resource type="Texture2D" uid="uid://dmjlr3jyplmni" path="res://kenney_assets/PrologueWorld2_Page1.png" id="1_jccya"]
-[ext_resource type="Script" path="res://PrologueWorld2.gd" id="1_qtrx1"]
+[ext_resource type="Script" path="res://Scripts/PrologueWorld2.gd" id="1_qtrx1"]
 [ext_resource type="Texture2D" uid="uid://b5pynxxxdifu8" path="res://kenney_assets/PrologueWorld2_Page2.png" id="2_5nxkh"]
 [ext_resource type="Texture2D" uid="uid://twajqgb2iexl" path="res://kenney_assets/PrologueWorld2_Page3.png" id="3_in5je"]
+
 
 [node name="PrologueWorld2" type="Control"]
 layout_mode = 3
