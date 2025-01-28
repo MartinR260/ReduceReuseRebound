@@ -71,17 +71,17 @@ func _on_next_level_pressed():
 	get_tree().paused = false
 	visible = false
 	if get_tree().current_scene.name == "World":
-		var save_data = "res://World2.tscn"
+		var save_data = "res://Scenes/World2.tscn"
 		var file = FileAccess.open("res://saves/save_world.json", FileAccess.WRITE)
 		if file:
 			file.store_string(JSON.stringify(save_data))
 			file.close()
 		else:
 			print("Progress NOT saved.")
-		get_tree().change_scene_to_file("res://PrologueWorld2.tscn")
+		get_tree().change_scene_to_file("res://Scenes/PrologueWorld2.tscn")
 		
 	elif get_tree().current_scene.name == "World2":
-		var save_data = "res://World3.tscn"
+		var save_data = "res://Scenes/World3.tscn"
 		file = FileAccess.open("res://saves/save_world.json", FileAccess.WRITE)
 		if file:
 			file.store_string(JSON.stringify(save_data))
@@ -91,14 +91,14 @@ func _on_next_level_pressed():
 		get_tree().change_scene_to_file("res://PrologueWorld3.tscn")
 		
 	elif get_tree().current_scene.name == "World3":
-		var save_data = "res://World3.tscn"
+		var save_data = "res://Scenes/World3.tscn"
 		file = FileAccess.open("res://saves/save_world.json", FileAccess.WRITE)
 		if file:
 			file.store_string(JSON.stringify(save_data))
 			file.close()
 		else:
 			print("Progress NOT saved.")
-		get_tree().change_scene_to_file("res://Epilogue.tscn")
+		get_tree().change_scene_to_file("res://Scenes/Epilogue.tscn")
 
 
 func _on_retry_level_pressed():
@@ -110,7 +110,7 @@ func _on_retry_level_pressed():
 func _on_quit_to_main_menu_pressed():
 	get_tree().paused = false
 	visible = false
-	get_tree().change_scene_to_file("res://MainMenu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
 	
 func _ready():
 	if get_tree().current_scene.name != "World":

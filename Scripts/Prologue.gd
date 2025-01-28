@@ -10,6 +10,6 @@ func _on_button_button_up():
 		button.text = "You are going to do one final loop\nof the training course before taking off."
 		
 	if counter == 1:
-		get_tree().change_scene_to_file("res://World.tscn")
+		get_tree().change_scene_to_file("res://Scenes/World.tscn")
 		
 	counter += 1 

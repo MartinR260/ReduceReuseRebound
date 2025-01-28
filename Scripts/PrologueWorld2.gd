@@ -15,6 +15,6 @@ func _on_button_button_up():
 		button.text = "Amidst the chaos you realize you've lost\nyour way from the squad. You must reach the radio tower\nto request pickup before it is too late!"
 
 	if counter == 2:
-		get_tree().change_scene_to_file("res://World2.tscn")
+		get_tree().change_scene_to_file("res://Scenes/World2.tscn")
 		
 	counter += 1 

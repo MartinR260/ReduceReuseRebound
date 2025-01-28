@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://Scripts/FinishedLevelMenu.gd" id="1_6r1d4"]
 [ext_resource type="Texture2D" uid="uid://cfy5mqjkum2s8" path="res://kenney_assets/pause_background.png" id="2_bp2ke"]
 
-
 [sub_resource type="LabelSettings" id="LabelSettings_jiem2"]
 font_size = 50
 outline_size = 10

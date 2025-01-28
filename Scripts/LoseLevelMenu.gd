@@ -10,4 +10,4 @@ func _on_retry_pressed():
 func _on_quit_pressed():
 	get_tree().paused = false
 	visible = false
-	get_tree().change_scene_to_file("res://MainMenu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")

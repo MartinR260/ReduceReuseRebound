@@ -4,7 +4,7 @@ extends Control
 
 func _on_new_game_pressed():
 	var save_data = {
-		"current_level": "res://World.tscn"
+		"current_level": "res://Scenes/World.tscn"
 	}
 	var file = FileAccess.open("res://saves/save_world.json", FileAccess.WRITE)
 	if file:
@@ -12,7 +12,7 @@ func _on_new_game_pressed():
 		file.close()
 	else:
 		print("Progress NOT saved.")
-	get_tree().change_scene_to_file("res://Prologue.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Prologue.tscn")
 
 
 func _on_quit_game_pressed():
