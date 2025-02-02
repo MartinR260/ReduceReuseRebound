@@ -98,7 +98,7 @@ layout_mode = 0
 offset_top = 99.0
 offset_right = 576.0
 offset_bottom = 146.0
-text = "Objective: Prepare for deployment
+text = "Objective: Prepare for deployment 
 by completing the obstacle course!"
 label_settings = SubResource("LabelSettings_tl6jp")
 horizontal_alignment = 1

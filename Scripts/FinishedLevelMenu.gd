@@ -9,7 +9,7 @@ func _process(delta):
 	if visible:
 		if get_tree().current_scene.name == "World2":
 			var current_time = timer.time_remaining
-			file = FileAccess.open("res://saves/save_time_world2.json", FileAccess.READ)
+			file = FileAccess.open("saves/save_time_world2.json", FileAccess.READ)
 			if file:
 				var save_text = file.get_as_text()
 				file.close()
@@ -29,7 +29,7 @@ func _process(delta):
 			else:
 				best_time_label.text = "Best Time: " + str(minutes).pad_zeros(2) + ":" + str(seconds).pad_zeros(2) + "." + str(milliseconds).pad_zeros(3)
 			var save_data = fastest_time
-			file = FileAccess.open("res://saves/save_time_world2.json", FileAccess.WRITE)
+			file = FileAccess.open("saves/save_time_world2.json", FileAccess.WRITE)
 			if file:
 				file.store_string(JSON.stringify(save_data))
 				file.close()
@@ -39,7 +39,7 @@ func _process(delta):
 			
 		elif get_tree().current_scene.name == "World3":
 				var current_time = timer.time_remaining
-				file = FileAccess.open("res://saves/save_time_world3.json", FileAccess.READ)
+				file = FileAccess.open("saves/save_time_world3.json", FileAccess.READ)
 				if file:
 					var save_text = file.get_as_text()
 					file.close()
@@ -60,7 +60,7 @@ func _process(delta):
 					best_time_label.text = "Best Time: " + str(minutes).pad_zeros(2) + ":" + str(seconds).pad_zeros(2) + "." + str(milliseconds).pad_zeros(3)
 				
 				var save_data = fastest_time
-				file = FileAccess.open("res://saves/save_time_world3.json", FileAccess.WRITE)
+				file = FileAccess.open("saves/save_time_world3.json", FileAccess.WRITE)
 				if file:
 					file.store_string(JSON.stringify(save_data))
 					file.close()
@@ -72,7 +72,7 @@ func _on_next_level_pressed():
 	visible = false
 	if get_tree().current_scene.name == "World":
 		var save_data = "res://Scenes/World2.tscn"
-		var file = FileAccess.open("res://saves/save_world.json", FileAccess.WRITE)
+		var file = FileAccess.open("saves/save_world.json", FileAccess.WRITE)
 		if file:
 			file.store_string(JSON.stringify(save_data))
 			file.close()
@@ -82,7 +82,7 @@ func _on_next_level_pressed():
 		
 	elif get_tree().current_scene.name == "World2":
 		var save_data = "res://Scenes/World3.tscn"
-		file = FileAccess.open("res://saves/save_world.json", FileAccess.WRITE)
+		file = FileAccess.open("saves/save_world.json", FileAccess.WRITE)
 		if file:
 			file.store_string(JSON.stringify(save_data))
 			file.close()
@@ -92,7 +92,7 @@ func _on_next_level_pressed():
 		
 	elif get_tree().current_scene.name == "World3":
 		var save_data = "res://Scenes/World3.tscn"
-		file = FileAccess.open("res://saves/save_world.json", FileAccess.WRITE)
+		file = FileAccess.open("saves/save_world.json", FileAccess.WRITE)
 		if file:
 			file.store_string(JSON.stringify(save_data))
 			file.close()
