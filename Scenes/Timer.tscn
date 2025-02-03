@@ -27,9 +27,6 @@ mouse_filter = 2
 disabled = true
 text = " "
 
-[node name="Timer" type="Timer" parent="."]
-autostart = true
-
 [node name="Warning" type="ColorRect" parent="."]
 visible = false
 layout_mode = 0

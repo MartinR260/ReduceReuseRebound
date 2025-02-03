@@ -1,7 +1,6 @@
 extends Control
 
 @onready var timer_label = $Label
-@onready var timer = $Timer
 @onready var lose_level_menu = $"../../LoseLevelMenu"
 @onready var warning_rect = $Warning
 
@@ -12,7 +11,6 @@ var time_remaining = time_limit
 func _ready():
 	time_remaining = time_limit
 	update_timer_display()
-	timer.start()
 
 func _process(delta):
 	time_remaining -= delta
@@ -30,7 +28,6 @@ func update_timer_display():
 	timer_label.text = str(minutes).pad_zeros(2) + ":" + str(seconds).pad_zeros(2) + "." + str(milliseconds).pad_zeros(3)
 
 func on_time_over():
-	timer.stop()
 	get_tree().paused = true
 	Input.set_custom_mouse_cursor(null)
 	lose_level_menu.visible = true

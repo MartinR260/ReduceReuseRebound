@@ -1,1 +1,14 @@
 res://Scenes/World.tscn
+res://Scripts/Player.gd
+res://Scenes/Rocket.tscn
+res://Scripts/Rocket.gd
+res://Scenes/World2.tscn
+res://Scenes/World3.tscn
+res://Scenes/Player.tscn
+res://Scenes/Timer.tscn
+res://Scenes/TileMap.tscn
+res://Scripts/PauseMenu.gd
+res://Scenes/FinishedLevelMenu.tscn
+res://Scripts/MainMenu.gd
+res://Scripts/FinishedLevelMenu.gd
+res://Scripts/Timer.gd

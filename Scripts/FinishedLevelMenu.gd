@@ -88,7 +88,7 @@ func _on_next_level_pressed():
 			file.close()
 		else:
 			print("Progress NOT saved.")
-		get_tree().change_scene_to_file("res://PrologueWorld3.tscn")
+		get_tree().change_scene_to_file("res://Scenes/PrologueWorld3.tscn")
 		
 	elif get_tree().current_scene.name == "World3":
 		var save_data = "res://Scenes/World3.tscn"

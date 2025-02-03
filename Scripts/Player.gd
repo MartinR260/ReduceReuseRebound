@@ -30,8 +30,6 @@ var breakable_scene = preload("res://Scenes/Breakable.tscn")
 var last_shot_time = -cooldown_time
 var collected_blocks = 0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var double_jump = true;
-var air_time = 1;
 var idle_timer = 0.0
 var last_mouse_position = Vector2.ZERO
 var build_mode = false
@@ -119,9 +117,7 @@ func _physics_process(delta):
 	
 	# Add the gravity.
 	if not is_on_floor():
-		#velocity.y += gravity * air_time * (delta / 2)
 		velocity.y += gravity * delta
-		air_time += delta
 		if velocity.y > 0:
 			sprite.animation = "Fall"
 			sprite.play()
@@ -131,17 +127,15 @@ func _physics_process(delta):
 		
 		
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and (is_on_floor() or double_jump):
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		jump_sound.play()
-		double_jump = false;
-		air_time /= 1.5
 		velocity.y = JUMP_VELOCITY
 		if collected_blocks <= 3:
 			velocity.y += collected_blocks * 20
 		else:
 			velocity.y += 60
 	else:
-		if Input.is_action_just_released("jump"):
+		if Input.is_action_just_released("jump"): 
 			velocity.y = max(-80, velocity.y)
 		
 	if mouse_position != last_mouse_position:
@@ -152,8 +146,6 @@ func _physics_process(delta):
 		
 		
 	if is_on_floor():
-		double_jump = false; #Make 'true' for double jump
-		air_time = 1
 		if velocity.x == 0:
 			if idle_timer > 1.5:
 				sprite.animation = "Idle"
