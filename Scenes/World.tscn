@@ -34,6 +34,39 @@ offset_right = 0.0
 grow_horizontal = 1
 grow_vertical = 1
 
+[node name="FinishedLevelMenu" parent="." instance=ExtResource("9_hbogw")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="PauseMenu" parent="." instance=ExtResource("7_xyepe")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Objective" type="Label" parent="PauseMenu"]
+layout_mode = 0
+offset_top = 99.0
+offset_right = 576.0
+offset_bottom = 146.0
+text = "Objective: Prepare for deployment 
+by completing the obstacle course!"
+label_settings = SubResource("LabelSettings_tl6jp")
+horizontal_alignment = 1
+
+[node name="UI" parent="." instance=ExtResource("5_jywlr")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
 [node name="Breakables" type="Node" parent="."]
 
 [node name="Breakable" parent="Breakables" instance=ExtResource("3_etvib")]
@@ -84,29 +117,11 @@ position = Vector2(2601, 243)
 [node name="Breakable14" parent="Breakables" instance=ExtResource("3_etvib")]
 position = Vector2(2547, 243)
 
-[node name="UI" parent="." instance=ExtResource("5_jywlr")]
-
 [node name="Player" parent="." instance=ExtResource("2_6aqpw")]
 z_index = 2
 position = Vector2(36, 220)
 
-[node name="PauseMenu" parent="." instance=ExtResource("7_xyepe")]
-visible = false
-
-[node name="Objective" type="Label" parent="PauseMenu"]
-layout_mode = 0
-offset_top = 99.0
-offset_right = 576.0
-offset_bottom = 146.0
-text = "Objective: Prepare for deployment 
-by completing the obstacle course!"
-label_settings = SubResource("LabelSettings_tl6jp")
-horizontal_alignment = 1
-
 [node name="Camera" parent="." instance=ExtResource("8_bqwec")]
-
-[node name="FinishedLevelMenu" parent="." instance=ExtResource("9_hbogw")]
-visible = false
 
 [node name="FinishLevelArea" parent="." instance=ExtResource("10_387f6")]
 position = Vector2(3366, 153)

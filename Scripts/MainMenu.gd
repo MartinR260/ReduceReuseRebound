@@ -9,7 +9,7 @@ func _on_new_game_pressed():
 	# add "res://" to directory when working with files during development
 	var file = FileAccess.open("saves/save_world.json", FileAccess.WRITE) 
 	if file:
-		file.store_string(JSON.stringify(save_data))
+		file.store_string(JSON.stringify(save_data["current_level"]))
 		file.close()
 	else:
 		print("Progress NOT saved.")
@@ -39,6 +39,5 @@ func _ready():
 		var json = JSON.new()
 		var result = json.parse(save_text)
 		var save_data = json.get_data()
-		if save_data.has("current_level"):
+		if save_data != null and save_data.has("current_level"):
 			continue_button.disabled = false
-		

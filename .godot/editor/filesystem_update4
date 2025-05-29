@@ -1,4 +1,3 @@
-res://Scenes/Epilogue.tscn
 res://Scenes/World2.tscn
 res://Scenes/World3.tscn
 res://Scenes/World.tscn
@@ -6,7 +5,9 @@ res://Scenes/Player.tscn
 res://Scenes/Timer.tscn
 res://Scenes/Rocket.tscn
 res://Scenes/TileMap.tscn
+res://Scenes/Epilogue.tscn
 res://Scenes/PrologueWorld3.tscn
-res://Scripts/Epilogue.gd
 res://Scenes/PrologueWorld2.tscn
-res://Scripts/PrologueWorld2.gd
+res://Scripts/Player.gd
+res://Scripts/FinishedLevelMenu.gd
+res://Scripts/MainMenu.gd

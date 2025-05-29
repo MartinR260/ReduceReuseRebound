@@ -45,7 +45,6 @@ func _process(delta):
 			
 			#print("Collided with: ", collision.get_collider().name)
 			if collision.get_collider().name.begins_with("Breakable") or collision.get_collider().name.begins_with("@RigidBody2D"):
-				# ^ Bad solution, find out problem
 				emit_signal("broken_block")
 				collision.get_collider().queue_free()
 			queue_free()

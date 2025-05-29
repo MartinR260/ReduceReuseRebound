@@ -38,19 +38,24 @@ var mouse_offset = Vector2.ZERO
 var walk_sound_cooldown = 0.2
 var last_walk_sound_time = 0
 var blocks_counter
+var screen_width = 576
+var y_limit = 330 #player beyond this -> out of bounds
+var jump_decrease_ratio = 0.115
+var slowing_ratio = 20
+var block_slowing_limit = 3 #block amount that affect movement
 
 func _physics_process(delta):
-	
-	camera.global_position.x = 576 * (int(global_position.x) / 576) #the number is equal to the screen width
-	ui.global_position.x = 576 * (int(global_position.x) / 576)
-	pause_menu.global_position.x = 576 * (int(global_position.x) / 576)
-	finished_level_menu.global_position.x = 576 * (int(global_position.x) / 576)
+	var screen_count = screen_width * (int(global_position.x) / screen_width) #start of screen page no.X
+	camera.global_position.x = screen_count
+	ui.global_position.x = screen_count
+	pause_menu.global_position.x = screen_count
+	finished_level_menu.global_position.x = screen_count
 	if get_tree().current_scene.name != "World":
-		lose_level_menu.global_position.x = 576 * (int(global_position.x) / 576)
+		lose_level_menu.global_position.x = screen_count
 	
-	if global_position.y >= 330:
+	if global_position.y >= y_limit:
 		fall_sound.play()
-		global_position.x = 576 * (int(global_position.x) / 576) + 50
+		global_position.x = screen_count + 50
 		global_position.y = 100
 		velocity.y = 0
 		
@@ -87,16 +92,16 @@ func _physics_process(delta):
 			sprite.animation = "Walk"
 			sprite.play()
 			
-		if collected_blocks <= 3:
+		if collected_blocks <= block_slowing_limit:
 			if input.x > 0:
-				input.x -= collected_blocks * 0.115
+				input.x -= collected_blocks * jump_decrease_ratio
 			elif input.x < 0:
-				input.x += collected_blocks * 0.115
+				input.x += collected_blocks * jump_decrease_ratio
 		else:
 			if input.x > 0:
-				input.x -= 0.330
+				input.x -= jump_decrease_ratio * block_slowing_limit
 			elif input.x < 0:
-				input.x += 0.330
+				input.x += jump_decrease_ratio * block_slowing_limit
 				
 		apply_acceleration(input.x)
 		
@@ -130,10 +135,10 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		jump_sound.play()
 		velocity.y = JUMP_VELOCITY
-		if collected_blocks <= 3:
-			velocity.y += collected_blocks * 20
+		if collected_blocks <= block_slowing_limit:
+			velocity.y += collected_blocks * slowing_ratio
 		else:
-			velocity.y += 60
+			velocity.y += slowing_ratio * block_slowing_limit
 	else:
 		if Input.is_action_just_released("jump"): 
 			velocity.y = max(-80, velocity.y)
